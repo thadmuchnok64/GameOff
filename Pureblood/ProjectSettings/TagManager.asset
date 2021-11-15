@@ -6,6 +6,7 @@ TagManager:
   tags:
   - NPC
   - Enemy
+  - InteractableObject
   layers:
   - Default
   - TransparentFX
@@ -40,6 +41,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Floor
+    uniqueID: 1736402083
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

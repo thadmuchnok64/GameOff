@@ -6,7 +6,10 @@ public class NPC : Entity
 {
     private int immunity = 3;
     Coroutine hostility;
+    [Header("NPC Parameters")]
     [SerializeField] string name = "Creature";
+    public bool hostile;
+
     private Container inventory;
     public override void TakeDamage(float damage)
     {
@@ -26,7 +29,6 @@ public class NPC : Entity
                 hostility = StartCoroutine(HostilityCooldown(30));
             }
         }
-       
         base.TakeDamage(damage);
     }
 
@@ -37,6 +39,15 @@ public class NPC : Entity
         if (gameObject.tag == "NPC")
         {
             immunity = 3;
+        }
+    }
+
+    public virtual void TriggerDialogue()
+    {
+        DialogueTrigger dt = GetComponent<DialogueTrigger>();
+        if (dt != null)
+        {
+            dt.DoAction();
         }
     }
 

@@ -17,20 +17,33 @@ public class Entity : MonoBehaviour
      * 
      */
 
-    [SerializeField] protected int strength = 10, dexterity = 10, constitution = 10, endurance = 10, divinity = 10;
+    [Header("Stats")]
+    [SerializeField] protected int strength = 10;
+    [SerializeField] protected int dexterity = 10;
+    [SerializeField] protected int constitution = 10;
+    [SerializeField] protected int endurance = 10;
+    [SerializeField] protected int divinity = 10;
+    [Header(" ")]
     [SerializeField] protected int level = 0;
-    [SerializeField] protected float damage;
+    [SerializeField] protected float damage = 20f;
+    [SerializeField] protected float poise = 100f;
     private float maxHealth, maxStamina;
     private float health, stamina;
+    protected bool canRegenStam = true;
     public virtual void Awake()
     {
         FixValues();
         health = maxHealth;
         stamina = maxStamina;
+        inventory = GetComponent<Inventory>();
         //InvokeRepeating("FixValues", 1,1);
 
     }
 
+
+
+    // Fundamental functions
+    #region Fundamentals
     // fixes stuf like max stamina, max health, max
     public virtual void FixValues()
     {
@@ -41,8 +54,76 @@ public class Entity : MonoBehaviour
     //Entity Takes damage
     public virtual void TakeDamage(float damage)
     {
-        health -= damage;
+        if (currentState != EntityStates.DASHING)
+        {
+            health -= damage;
+        }
+
     }
+
+    public virtual void useStamina(float staminaDrain)
+    {
+        stamina -= staminaDrain;
+    }
+
+    public float GetStamina()
+    {
+        return stamina;
+    }
+
+    public float GetHealth()
+    {
+        return health;
+    }
+
+    public float GetMaxHealth()
+    {
+        return maxHealth;
+    }
+
+    public float GetMaxStamina()
+    {
+        return maxStamina;
+    }
+
+    public void SetCanRegenStamina(bool value)
+    {
+        canRegenStam = value;
+    }
+
+    public bool GetCanRegenStamina()
+    {
+        return canRegenStam;
+    }
+
+    public float GetDamage()
+    {
+        return damage;
+    }
+
+    public virtual void FixedUpdate()
+    {
+      //  Debug.Log(currentState);
+        if (canRegenStam)
+        {
+            stamina += maxStamina * 0.33f * Time.deltaTime;
+        }
+
+        if (stamina >= maxStamina)
+        {
+            stamina = maxStamina;
+        }
+
+        if(health <= 0)
+        {
+            currentState = EntityStates.DEAD;
+            Debug.Log("I am Dead");
+        }
+        
+    }
+    #endregion
+
+    // Stat getter and setter functions below
     #region Statstuff
     public int GetStrength()
     {
@@ -98,6 +179,50 @@ public class Entity : MonoBehaviour
         level = x;
     }
 
+
     #endregion
 
+    // Inventory stuff
+    #region InventoryManagement
+
+    private Inventory inventory;
+
+
+    public Inventory GetInventory()
+    {
+        return inventory;
+    }
+
+    #endregion
+
+    //Enum States
+    #region States
+    public enum EntityStates { IDLE, WALKING, DASHING, ATTACKING, PARRYING, PARRYABLE, STUNNED, DEAD, TALKING };
+    public EntityStates currentState = EntityStates.IDLE;
+
+    #endregion
+
+    //Status Effects
+    #region Status Effects
+    public IEnumerator BuffStregnth(int amount, float duration)
+    {
+        SetStrength(GetStrength() + amount);
+        yield return new WaitForSeconds(duration);
+        SetStrength(GetStrength() - amount);
+    }
+
+    public IEnumerator BuffDexterity(int amount, float duration)
+    {
+        SetConstitution(GetConstitution() + amount);
+        yield return new WaitForSeconds(duration);
+        SetConstitution(GetConstitution() - amount);
+    }
+
+    public IEnumerator BuffDivinity(int amount, float duration)
+    {
+        SetDivinity(GetDivinity() + amount);
+        yield return new WaitForSeconds(duration);
+        SetDivinity(GetDivinity() - amount);
+    }
+    #endregion
 }
