@@ -14,7 +14,7 @@ public class Movement : MonoBehaviour
     public void ManageForce(Vector2 force)
     {
         rb.AddForce(force);
-
+        
         if (rb.velocity.magnitude >= maxSpeed)
         {
             rb.velocity = rb.velocity.normalized * maxSpeed;

@@ -47,7 +47,15 @@ public class NPC : Entity
         DialogueTrigger dt = GetComponent<DialogueTrigger>();
         if (dt != null)
         {
-            dt.DoAction();
+            if (theInventory is Shop)
+            {
+                dt.DoShop(theInventory as Shop);
+
+            }
+            else
+            {
+                dt.DoAction();
+            }
         }
     }
 

@@ -20,7 +20,9 @@ public class Entity : MonoBehaviour
     [Header("Stats")]
     [SerializeField] protected int strength = 10;
     [SerializeField] protected int dexterity = 10;
+    [SerializeField] protected int baseConstitution = 10;
     [SerializeField] protected int constitution = 10;
+    [SerializeField] protected int baseEndurance = 10;
     [SerializeField] protected int endurance = 10;
     [SerializeField] protected int divinity = 10;
     [Header(" ")]
@@ -30,12 +32,15 @@ public class Entity : MonoBehaviour
     private float maxHealth, maxStamina;
     private float health, stamina;
     protected bool canRegenStam = true;
+
+    public InventoryObject theInventory;
+
     public virtual void Awake()
     {
         FixValues();
         health = maxHealth;
         stamina = maxStamina;
-        inventory = GetComponent<Inventory>();
+        //inventory = GetComponent<InventoryObject>();
         //InvokeRepeating("FixValues", 1,1);
 
     }
@@ -103,7 +108,7 @@ public class Entity : MonoBehaviour
 
     public virtual void FixedUpdate()
     {
-      //  Debug.Log(currentState);
+        //  Debug.Log(currentState);
         if (canRegenStam)
         {
             stamina += maxStamina * 0.33f * Time.deltaTime;
@@ -114,12 +119,12 @@ public class Entity : MonoBehaviour
             stamina = maxStamina;
         }
 
-        if(health <= 0)
+        if (health <= 0)
         {
             currentState = EntityStates.DEAD;
             Debug.Log("I am Dead");
         }
-        
+
     }
     #endregion
 
@@ -145,7 +150,7 @@ public class Entity : MonoBehaviour
 
     public int GetConstitution()
     {
-        return constitution;
+        return baseConstitution;
     }
     public void SetConstitution(int x)
     {
@@ -154,7 +159,7 @@ public class Entity : MonoBehaviour
 
     public int GetEndurance()
     {
-        return endurance;
+        return baseEndurance;
     }
     public void SetEndurance(int x)
     {
@@ -185,10 +190,10 @@ public class Entity : MonoBehaviour
     // Inventory stuff
     #region InventoryManagement
 
-    private Inventory inventory;
+    //private Inventory inventory;
+    private InventoryObject inventory;
 
-
-    public Inventory GetInventory()
+    public InventoryObject GetInventory()
     {
         return inventory;
     }
@@ -199,6 +204,7 @@ public class Entity : MonoBehaviour
     #region States
     public enum EntityStates { IDLE, WALKING, DASHING, ATTACKING, PARRYING, PARRYABLE, STUNNED, DEAD, TALKING };
     public EntityStates currentState = EntityStates.IDLE;
+    
 
     #endregion
 
@@ -225,4 +231,7 @@ public class Entity : MonoBehaviour
         SetDivinity(GetDivinity() - amount);
     }
     #endregion
+
+    
+
 }

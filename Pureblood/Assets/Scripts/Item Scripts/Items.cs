@@ -34,7 +34,7 @@ public class Items : MonoBehaviour
         GameObject contactedObject = collision.gameObject;
         if(contactedObject.tag == "Player")
         {
-            contactedObject.GetComponent<Entity>().GetInventory().AddItem(this);
+            //contactedObject.GetComponent<Entity>().GetInventory().AddItem(this);
             
 
             //Destroy(gameObject);

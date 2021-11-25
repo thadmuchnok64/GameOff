@@ -121,6 +121,14 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Parry"",
+                    ""type"": ""Button"",
+                    ""id"": ""4951d167-d535-46cd-ad7c-7837c4645f6a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -354,6 +362,17 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""action"": ""WeaponThree"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""332990b2-f3a8-4076-b72c-fca3d867fbc3"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Parry"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -381,6 +400,7 @@ public class @Controls : IInputActionCollection, IDisposable
         m_Player_WeaponOne = m_Player.FindAction("WeaponOne", throwIfNotFound: true);
         m_Player_WeaponTwo = m_Player.FindAction("WeaponTwo", throwIfNotFound: true);
         m_Player_WeaponThree = m_Player.FindAction("WeaponThree", throwIfNotFound: true);
+        m_Player_Parry = m_Player.FindAction("Parry", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -443,6 +463,7 @@ public class @Controls : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_WeaponOne;
     private readonly InputAction m_Player_WeaponTwo;
     private readonly InputAction m_Player_WeaponThree;
+    private readonly InputAction m_Player_Parry;
     public struct PlayerActions
     {
         private @Controls m_Wrapper;
@@ -460,6 +481,7 @@ public class @Controls : IInputActionCollection, IDisposable
         public InputAction @WeaponOne => m_Wrapper.m_Player_WeaponOne;
         public InputAction @WeaponTwo => m_Wrapper.m_Player_WeaponTwo;
         public InputAction @WeaponThree => m_Wrapper.m_Player_WeaponThree;
+        public InputAction @Parry => m_Wrapper.m_Player_Parry;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -508,6 +530,9 @@ public class @Controls : IInputActionCollection, IDisposable
                 @WeaponThree.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnWeaponThree;
                 @WeaponThree.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnWeaponThree;
                 @WeaponThree.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnWeaponThree;
+                @Parry.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnParry;
+                @Parry.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnParry;
+                @Parry.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnParry;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -551,6 +576,9 @@ public class @Controls : IInputActionCollection, IDisposable
                 @WeaponThree.started += instance.OnWeaponThree;
                 @WeaponThree.performed += instance.OnWeaponThree;
                 @WeaponThree.canceled += instance.OnWeaponThree;
+                @Parry.started += instance.OnParry;
+                @Parry.performed += instance.OnParry;
+                @Parry.canceled += instance.OnParry;
             }
         }
     }
@@ -579,5 +607,6 @@ public class @Controls : IInputActionCollection, IDisposable
         void OnWeaponOne(InputAction.CallbackContext context);
         void OnWeaponTwo(InputAction.CallbackContext context);
         void OnWeaponThree(InputAction.CallbackContext context);
+        void OnParry(InputAction.CallbackContext context);
     }
 }

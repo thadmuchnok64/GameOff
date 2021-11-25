@@ -1,0 +1,1205 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8019900765387544863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3479578ca58931458f44d5df78de5a0, type: 3}
+  m_Name: Dialogue Branch
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 776, y: -488}
+  ports:
+    keys:
+    - entry
+    - choice1
+    - choice2
+    - choice3
+    - choice4
+    values:
+    - _fieldName: entry
+      _node: {fileID: -8019900765387544863}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: choice1
+        node: {fileID: -7866230543133313931}
+        reroutePoints: []
+      - fieldName: choice1
+        node: {fileID: -2828332562297791724}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choice1
+      _node: {fileID: -8019900765387544863}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: entry
+        node: {fileID: -2537638284006512607}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choice2
+      _node: {fileID: -8019900765387544863}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choice3
+      _node: {fileID: -8019900765387544863}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choice4
+      _node: {fileID: -8019900765387544863}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  entry: 0
+  choice1: 0
+  choice2: 0
+  choice3: 0
+  choice4: 0
+  answer: I came because I felt the need to help in any way I could.
+  response: That's very honorable of you, but sometimes we need to focus on our own
+    problems, and not play the hero.
+--- !u!114 &-7866230543133313931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3479578ca58931458f44d5df78de5a0, type: 3}
+  m_Name: Dialogue Branch
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 513.7939, y: -567.09045}
+  ports:
+    keys:
+    - entry
+    - choice1
+    - choice2
+    - choice3
+    - choice4
+    values:
+    - _fieldName: entry
+      _node: {fileID: -7866230543133313931}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: choice1
+        node: {fileID: -5365406225795944686}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choice1
+      _node: {fileID: -7866230543133313931}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: entry
+        node: {fileID: -8019900765387544863}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choice2
+      _node: {fileID: -7866230543133313931}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: entry
+        node: {fileID: -1617254822250174815}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choice3
+      _node: {fileID: -7866230543133313931}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choice4
+      _node: {fileID: -7866230543133313931}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  entry: 0
+  choice1: 0
+  choice2: 0
+  choice3: 0
+  choice4: 0
+  answer: There were monsters there. I think they're called "Forsaken?" Atleas t
+    that's what Alvin told me.
+  response: Yes... Things are getting dangerous out there. I specifically didn't
+    write to you, because I didn't want you to come.
+--- !u!114 &-7641232666226820680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3479578ca58931458f44d5df78de5a0, type: 3}
+  m_Name: Dialogue Branch
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 1400, y: -552}
+  ports:
+    keys:
+    - entry
+    - choice1
+    - choice2
+    - choice3
+    - choice4
+    values:
+    - _fieldName: entry
+      _node: {fileID: -7641232666226820680}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: choice1
+        node: {fileID: -2537638284006512607}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choice1
+      _node: {fileID: -7641232666226820680}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: entry
+        node: {fileID: 3067569371930892053}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choice2
+      _node: {fileID: -7641232666226820680}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choice3
+      _node: {fileID: -7641232666226820680}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choice4
+      _node: {fileID: -7641232666226820680}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  entry: 0
+  choice1: 0
+  choice2: 0
+  choice3: 0
+  choice4: 0
+  answer: "That\u2019d be nice. I deserve some ale after that fight earlier."
+  response: "*He nods and smiles* Of course, it\u2019s on me. I\u2019ll wrap up things
+    here. You can meet me at the Pub. "
+--- !u!114 &-5365406225795944686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3479578ca58931458f44d5df78de5a0, type: 3}
+  m_Name: Dialogue Branch
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 216, y: -568}
+  ports:
+    keys:
+    - entry
+    - choice1
+    - choice2
+    - choice3
+    - choice4
+    values:
+    - _fieldName: entry
+      _node: {fileID: -5365406225795944686}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: choice1
+        node: {fileID: -1394566424401238002}
+        reroutePoints: []
+      - fieldName: choice1
+        node: {fileID: 5815190575826854229}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choice1
+      _node: {fileID: -5365406225795944686}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: entry
+        node: {fileID: -7866230543133313931}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choice2
+      _node: {fileID: -5365406225795944686}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choice3
+      _node: {fileID: -5365406225795944686}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choice4
+      _node: {fileID: -5365406225795944686}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  entry: 0
+  choice1: 0
+  choice2: 0
+  choice3: 0
+  choice4: 0
+  answer: I did. Why?
+  response: I heard that there was trouble at the station. There was an attack of
+    some sort?
+--- !u!114 &-2828332562297791724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3479578ca58931458f44d5df78de5a0, type: 3}
+  m_Name: Dialogue Branch
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 216, y: -264}
+  ports:
+    keys:
+    - entry
+    - choice1
+    - choice2
+    - choice3
+    - choice4
+    values:
+    - _fieldName: entry
+      _node: {fileID: -2828332562297791724}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: choice2
+        node: {fileID: -1394566424401238002}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choice1
+      _node: {fileID: -2828332562297791724}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: entry
+        node: {fileID: -8019900765387544863}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choice2
+      _node: {fileID: -2828332562297791724}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: entry
+        node: {fileID: -1617254822250174815}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choice3
+      _node: {fileID: -2828332562297791724}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choice4
+      _node: {fileID: -2828332562297791724}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  entry: 0
+  choice1: 0
+  choice2: 0
+  choice3: 0
+  choice4: 0
+  answer: Yes, by train. There was an attack. There were... monsters there.
+  response: 'I''m sure you fought hard, making your old man proud.
+
+    Still...
+    I''d be lying if I said I''m completely happy you''re here. Arcdenn isn''t what
+    it used to be; it''s not safe here.'
+--- !u!114 &-2688866405033566222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3479578ca58931458f44d5df78de5a0, type: 3}
+  m_Name: Dialogue Branch
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 1400, y: 24}
+  ports:
+    keys:
+    - entry
+    - choice1
+    - choice2
+    - choice3
+    - choice4
+    values:
+    - _fieldName: entry
+      _node: {fileID: -2688866405033566222}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: choice3
+        node: {fileID: -2537638284006512607}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choice1
+      _node: {fileID: -2688866405033566222}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: entry
+        node: {fileID: 3067569371930892053}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choice2
+      _node: {fileID: -2688866405033566222}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choice3
+      _node: {fileID: -2688866405033566222}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choice4
+      _node: {fileID: -2688866405033566222}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  entry: 0
+  choice1: 0
+  choice2: 0
+  choice3: 0
+  choice4: 0
+  answer: I'm not really in the drinking mood.
+  response: I understand that. However, if you're in the area, come in. I'd like
+    to have a word with you.
+--- !u!114 &-2537638284006512607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfb4dc6e7863b06498efc9b36f878fdf, type: 3}
+  m_Name: Quest Branch
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 1121.6792, y: -371.4146}
+  ports:
+    keys:
+    - entry
+    - choice1
+    - choice2
+    - choice3
+    - choice4
+    values:
+    - _fieldName: entry
+      _node: {fileID: -2537638284006512607}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: choice1
+        node: {fileID: -8019900765387544863}
+        reroutePoints: []
+      - fieldName: choice1
+        node: {fileID: -1617254822250174815}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choice1
+      _node: {fileID: -2537638284006512607}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: entry
+        node: {fileID: -7641232666226820680}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choice2
+      _node: {fileID: -2537638284006512607}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: entry
+        node: {fileID: 8576670047259331845}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choice3
+      _node: {fileID: -2537638284006512607}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: entry
+        node: {fileID: -2688866405033566222}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choice4
+      _node: {fileID: -2537638284006512607}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  entry: 0
+  choice1: 0
+  choice2: 0
+  choice3: 0
+  choice4: 0
+  answer: '[Continue]'
+  response: "The Forsaken started popping up right when people started disappearing.
+    I don\u2019t know much more beyond that. I\u2019m just glad you\u2019re alright.
+    We can go to the pub together later if you like? Like old times?"
+  questID: 2
+--- !u!114 &-1617254822250174815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3479578ca58931458f44d5df78de5a0, type: 3}
+  m_Name: Dialogue Branch
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 776, y: -200}
+  ports:
+    keys:
+    - entry
+    - choice1
+    - choice2
+    - choice3
+    - choice4
+    values:
+    - _fieldName: entry
+      _node: {fileID: -1617254822250174815}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: choice2
+        node: {fileID: -2828332562297791724}
+        reroutePoints: []
+      - fieldName: choice2
+        node: {fileID: -7866230543133313931}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choice1
+      _node: {fileID: -1617254822250174815}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: entry
+        node: {fileID: -2537638284006512607}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choice2
+      _node: {fileID: -1617254822250174815}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choice3
+      _node: {fileID: -1617254822250174815}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choice4
+      _node: {fileID: -1617254822250174815}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  entry: 0
+  choice1: 0
+  choice2: 0
+  choice3: 0
+  choice4: 0
+  answer: I can hold my own, dad.
+  response: I know you can. I trained you well. That won't stop me from worrying
+    about you, though.
+--- !u!114 &-1394566424401238002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3479578ca58931458f44d5df78de5a0, type: 3}
+  m_Name: Dialogue Branch
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -168, y: -488}
+  ports:
+    keys:
+    - entry
+    - choice1
+    - choice2
+    - choice3
+    - choice4
+    values:
+    - _fieldName: entry
+      _node: {fileID: -1394566424401238002}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: choice1
+        node: {fileID: 2326350127613622191}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choice1
+      _node: {fileID: -1394566424401238002}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: entry
+        node: {fileID: -5365406225795944686}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choice2
+      _node: {fileID: -1394566424401238002}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: entry
+        node: {fileID: -2828332562297791724}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choice3
+      _node: {fileID: -1394566424401238002}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choice4
+      _node: {fileID: -1394566424401238002}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  entry: 0
+  choice1: 0
+  choice2: 0
+  choice3: 0
+  choice4: 0
+  answer: It's great to see you, dad. I just got here.
+  response: 'Likewise!
+
+    *He smiles*
+
+    You didn''t take the train, did you?'
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ba4883251d0927448b88295c92bf72f, type: 3}
+  m_Name: FatherIntro
+  m_EditorClassIdentifier: 
+  nodes:
+  - {fileID: 2664197232770520210}
+  - {fileID: 2326350127613622191}
+  - {fileID: -1394566424401238002}
+  - {fileID: 5815190575826854229}
+  - {fileID: -5365406225795944686}
+  - {fileID: -2828332562297791724}
+  - {fileID: -7866230543133313931}
+  - {fileID: -1617254822250174815}
+  - {fileID: -8019900765387544863}
+  - {fileID: -7641232666226820680}
+  - {fileID: 8576670047259331845}
+  - {fileID: -2688866405033566222}
+  - {fileID: -2537638284006512607}
+  - {fileID: 3067569371930892053}
+  currentNode: {fileID: 0}
+--- !u!114 &2326350127613622191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3479578ca58931458f44d5df78de5a0, type: 3}
+  m_Name: Dialogue Branch
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -424, y: -168}
+  ports:
+    keys:
+    - entry
+    - choice1
+    - choice2
+    - choice3
+    - choice4
+    values:
+    - _fieldName: entry
+      _node: {fileID: 2326350127613622191}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: choice1
+        node: {fileID: 2664197232770520210}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choice1
+      _node: {fileID: 2326350127613622191}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: entry
+        node: {fileID: -1394566424401238002}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choice2
+      _node: {fileID: 2326350127613622191}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: entry
+        node: {fileID: 5815190575826854229}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choice3
+      _node: {fileID: 2326350127613622191}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choice4
+      _node: {fileID: 2326350127613622191}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  entry: 0
+  choice1: 0
+  choice2: 0
+  choice3: 0
+  choice4: 0
+  answer: '[Continue]'
+  response: Gael? What a pleasant surprise. I thought you were in London.
+--- !u!114 &2664197232770520210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 568c4163e8715394aa68ac72392bdf40, type: 3}
+  m_Name: Dialogue
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -760, y: -392}
+  ports:
+    keys:
+    - entry
+    - choice1
+    - choice2
+    - choice3
+    - choice4
+    values:
+    - _fieldName: entry
+      _node: {fileID: 2664197232770520210}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choice1
+      _node: {fileID: 2664197232770520210}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: entry
+        node: {fileID: 2326350127613622191}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choice2
+      _node: {fileID: 2664197232770520210}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choice3
+      _node: {fileID: 2664197232770520210}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choice4
+      _node: {fileID: 2664197232770520210}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  entry: 0
+  choice1: 0
+  choice2: 0
+  choice3: 0
+  choice4: 0
+  answer: '[Continue]'
+  response: A tall, bulky bald man with a bushy brown beard and eyebrows. He wears
+    a dirty, black apron. Perpetually gives off an understanding, sympathetic look.
+  npcName: Father
+  npcSprite: {fileID: 0}
+  startPoint: 1
+  nameColor: {r: 0, g: 0, b: 0, a: 0}
+  characterSounds: []
+--- !u!114 &3067569371930892053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6d6b450ff246524c8e419a0398cd191, type: 3}
+  m_Name: Dialogue Exit
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 1757.5691, y: -394.31134}
+  ports:
+    keys:
+    - entry
+    - choice1
+    - choice2
+    - choice3
+    - choice4
+    values:
+    - _fieldName: entry
+      _node: {fileID: 3067569371930892053}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: choice1
+        node: {fileID: -7641232666226820680}
+        reroutePoints: []
+      - fieldName: choice1
+        node: {fileID: 8576670047259331845}
+        reroutePoints: []
+      - fieldName: choice1
+        node: {fileID: -2688866405033566222}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choice1
+      _node: {fileID: 3067569371930892053}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choice2
+      _node: {fileID: 3067569371930892053}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choice3
+      _node: {fileID: 3067569371930892053}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choice4
+      _node: {fileID: 3067569371930892053}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  entry: 0
+  choice1: 0
+  choice2: 0
+  choice3: 0
+  choice4: 0
+  answer: Goodbye, Dad.
+  response: Take care, Gael.
+--- !u!114 &5815190575826854229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3479578ca58931458f44d5df78de5a0, type: 3}
+  m_Name: Dialogue Branch
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -168, y: -104}
+  ports:
+    keys:
+    - entry
+    - choice1
+    - choice2
+    - choice3
+    - choice4
+    values:
+    - _fieldName: entry
+      _node: {fileID: 5815190575826854229}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: choice2
+        node: {fileID: 2326350127613622191}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choice1
+      _node: {fileID: 5815190575826854229}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: entry
+        node: {fileID: -5365406225795944686}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choice2
+      _node: {fileID: 5815190575826854229}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choice3
+      _node: {fileID: 5815190575826854229}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choice4
+      _node: {fileID: 5815190575826854229}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  entry: 0
+  choice1: 0
+  choice2: 0
+  choice3: 0
+  choice4: 0
+  answer: I just arrived.
+  response: Hopefully not by train, right?
+--- !u!114 &8576670047259331845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3479578ca58931458f44d5df78de5a0, type: 3}
+  m_Name: Dialogue Branch
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 1400, y: -264}
+  ports:
+    keys:
+    - entry
+    - choice1
+    - choice2
+    - choice3
+    - choice4
+    values:
+    - _fieldName: entry
+      _node: {fileID: 8576670047259331845}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: choice2
+        node: {fileID: -2537638284006512607}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choice1
+      _node: {fileID: 8576670047259331845}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: entry
+        node: {fileID: 3067569371930892053}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choice2
+      _node: {fileID: 8576670047259331845}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choice3
+      _node: {fileID: 8576670047259331845}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choice4
+      _node: {fileID: 8576670047259331845}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  entry: 0
+  choice1: 0
+  choice2: 0
+  choice3: 0
+  choice4: 0
+  answer: That would be great, Dad.
+  response: "*He smiles* Of course, it\u2019s on me. I\u2019ll wrap up things here.
+    You can meet me at the Pub. "

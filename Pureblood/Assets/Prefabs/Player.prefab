@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &504969980350789810
+--- !u!1 &6006707796640504349
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,25 +8,30 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 504969980350789773}
-  - component: {fileID: 504969980350789774}
-  - component: {fileID: 504969980350789775}
-  - component: {fileID: 504969980350789809}
-  - component: {fileID: 504969980350789772}
+  - component: {fileID: 6006707796640504346}
+  - component: {fileID: 6006707796640504347}
+  - component: {fileID: 6006707796640504348}
+  - component: {fileID: 6006707796640504344}
+  - component: {fileID: 6006707796640504345}
+  - component: {fileID: 6006707796640504342}
+  - component: {fileID: 6006707796640504341}
+  - component: {fileID: 6006707796640504340}
+  - component: {fileID: 1637948104}
+  - component: {fileID: 549255083305047854}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &504969980350789773
+--- !u!4 &6006707796640504346
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 504969980350789810}
+  m_GameObject: {fileID: 6006707796640504349}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -34,13 +39,13 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &504969980350789774
+--- !u!212 &6006707796640504347
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 504969980350789810}
+  m_GameObject: {fileID: 6006707796640504349}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -53,7 +58,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -74,7 +79,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Sprite: {fileID: -5503160064538055933, guid: 1aee4d3cb9e223d4ea16ec0f16dd62cc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -85,14 +90,14 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &504969980350789775
+--- !u!114 &6006707796640504348
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 504969980350789810}
-  m_Enabled: 0
+  m_GameObject: {fileID: 6006707796640504349}
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
@@ -113,44 +118,202 @@ MonoBehaviour:
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: 5882e23c-8f0e-4c00-87b8-a5da78e52005
-    m_ActionName: Player/New action[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
+    m_ActionName: Player/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 9585ef26-f4bc-4c48-83ab-7ca9a38619d2
+    m_ActionName: Player/Dash[/Keyboard/leftShift]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f64986ae-df51-49ee-bf4e-1b5f950510d7
+    m_ActionName: Player/Inventory[/Keyboard/tab]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b32dfc3f-7371-4399-8fbb-4725bd63b765
+    m_ActionName: Player/Pause[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b794768c-c901-400d-9b97-d80560165643
+    m_ActionName: Player/Interact[/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 0540f5cb-7b8e-4944-8857-1c83fa9f7ffb
+    m_ActionName: Player/ScrollConsumable[/Keyboard/r]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f6752768-cdfc-4f0a-aed2-e7055e722759
+    m_ActionName: Player/QuestLog[/Keyboard/y]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 0237a775-aef9-4543-8b22-b418f2808564
+    m_ActionName: Player/Attack[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 7f7471e6-845d-4f06-8e87-647496a404fe
+    m_ActionName: Player/Levelup[/Keyboard/c]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: ab7ad7e4-daee-433a-a89e-c79dbaa91e0c
+    m_ActionName: Player/Use[/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 72e7a2e3-82d0-4e62-a0d4-83c5ab36922b
+    m_ActionName: Player/WeaponOne[/Keyboard/1]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 0f6bf133-7f89-451b-b6d6-efa032cc1a01
+    m_ActionName: Player/WeaponTwo[/Keyboard/2]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: bcde698c-33c4-4944-a863-e70aa422f735
+    m_ActionName: Player/WeaponThree[/Keyboard/3]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 4951d167-d535-46cd-ad7c-7837c4645f6a
+    m_ActionName: Player/Parry[/Mouse/rightButton]
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: KB+M
+  m_DefaultControlScheme: 
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &504969980350789809
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 504969980350789810}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fa7a795c3927af48902fe93c4535e31, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxSpeed: 5
-  acceleration: 45
---- !u!50 &504969980350789772
+--- !u!50 &6006707796640504344
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 504969980350789810}
+  m_GameObject: {fileID: 6006707796640504349}
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 5
+  m_LinearDrag: 8
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
+--- !u!114 &6006707796640504345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6006707796640504349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fa7a795c3927af48902fe93c4535e31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxSpeed: 30
+  acceleration: 40
+  dashMat: {fileID: 0}
+  cam: {fileID: 0}
+  dashCooldown: 1
+  dashStamDrain: 25
+  dashForce: 20
+  staminaRegenDelay: 2
+  IFrames: 0.3
+  parryCooldown: 0.4
+  bullet: {fileID: 1182055139653601259, guid: 8dd6da98944c63843afc381f888671e9, type: 3}
+  bulletObject: {fileID: 11400000, guid: b7f8e55389af2904794fbcf7897957cc, type: 2}
+  swoosh: {fileID: 0}
+  gunParticles: {fileID: 8460022137434703218, guid: d04c22b5a49e4a44380e004a0be3b9f0, type: 3}
+  animator: {fileID: 6006707796640504340}
+--- !u!114 &6006707796640504342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6006707796640504349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b42d36cb3a0a9ee48b3a44f147aa46d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  generateInventoryOnAwake: 0
+--- !u!114 &6006707796640504341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6006707796640504349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f82e70ab0779d7439b8bade3f485161, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  strength: 10
+  dexterity: 10
+  baseConstitution: 10
+  constitution: 10
+  baseEndurance: 10
+  endurance: 10
+  divinity: 10
+  level: 2
+  damage: 20
+  poise: 100
+  theInventory: {fileID: 11400000, guid: 9acf636260c84d04fa5dbc5e4dd09f26, type: 2}
+  currentState: 0
+  equippedWeapon: {fileID: 0}
+  equippedConsumable:
+    item: {fileID: 0}
+    amount: 0
+    maxAmount: 0
+  consumablesFunctions: {fileID: 0}
+--- !u!95 &6006707796640504340
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6006707796640504349}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4437d0c8390734944ba11acad821da06, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1637948104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6006707796640504349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bed4145d1b7475a4f80ee98ad368cae0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  updateConstantly: 1
+  changeChildren: 0
+  layerOffset: 0
+--- !u!58 &549255083305047854
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6006707796640504349}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.3

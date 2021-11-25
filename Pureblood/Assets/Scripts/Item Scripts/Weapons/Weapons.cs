@@ -18,15 +18,15 @@ public class Weapons : Items
         //damage = baseDamage + (strength/dexterity/divinity * 0.5f)
         if(scalingStat == "Strength")
         {
-            damage = baseDamage + strength;
+            damage = baseDamage + (strength * scaling);
         }
         else if(scalingStat == "Dexterity")
         {
-            damage = baseDamage + dexterity;
+            damage = baseDamage + (dexterity * scaling);
         }
         else if(scalingStat == "Divinity")
         {
-            damage = baseDamage + divinity;
+            damage = baseDamage + (divinity * scaling);
         }
     }
 

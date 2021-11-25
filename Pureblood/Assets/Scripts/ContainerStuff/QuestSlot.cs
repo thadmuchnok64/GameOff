@@ -14,6 +14,8 @@ public class QuestSlot : MonoBehaviour
     [SerializeField] TMPro.TextMeshProUGUI rewards;
     [SerializeField] TMPro.TextMeshProUGUI questGiver;
     [SerializeField] ItemSlot[] itemRewards;
+    //private ItemObject[] items;
+    //private int[] quantities;
 
 
 
@@ -26,9 +28,13 @@ public class QuestSlot : MonoBehaviour
             questNameText.text = "" + q.questName;
         if (questDescriptionText != null)
             questDescriptionText.text = "" + q.questDescription;
+        else
+        {
+            questNameText.text = "> " + questNameText.text;
+        }
         if (activity != null)
         {
-            if (q.isActive)
+            if (!q.isFinished)
             {
                 activity.text = "Active";
             } else
@@ -50,7 +56,31 @@ public class QuestSlot : MonoBehaviour
         }
         if (questGiver != null)
         {
-            questGiver.text = "Given by "+ q.nameOfQuestGiver;
+            if (questGiver.text != "" || questGiver.text != "n/a")
+            {
+                questGiver.text = "Given by " + q.nameOfQuestGiver;
+            } else
+            {
+                questGiver.text = "";
+            }
+        }
+        if (itemRewards.Length>0)
+        {
+
+            int i;
+            for(i= 0; i < quest.rewardItems.Length; i++)
+            {
+                
+                itemRewards[i].gameObject.SetActive(true);
+                itemRewards[i].SetItem(q.rewardItems[i],q.rewardQuantities[i]);
+            }
+            if (i < 3)
+            {
+                for(int y = i; y < 3; y++)
+                {
+                    itemRewards[y].gameObject.SetActive(false);
+                }
+            }
         }
     }
     public Quest GetQuest()

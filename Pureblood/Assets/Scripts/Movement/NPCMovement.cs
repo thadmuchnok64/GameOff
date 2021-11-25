@@ -29,7 +29,7 @@ public class NPCMovement : Movement
 
     private Coroutine attacking;
 
-   
+    [SerializeField] Animator animator;
 
 
 
@@ -40,7 +40,7 @@ public class NPCMovement : Movement
         npc = GetComponent<NPC>();
         rb = GetComponent<Rigidbody2D>();
         staminaRegenDelay = .5f;//npc.GetEndurance();
-        npc.GetInventory().EquipWeapon(0, new Sword());
+        //npc.GetInventory().EquipWeapon(0, new Sword());
         thisEntity = npc;
     }
 
@@ -49,6 +49,22 @@ public class NPCMovement : Movement
     {
         AI(Time.fixedDeltaTime);
         attackTimer -= Time.fixedDeltaTime;
+
+        if (animator != null)
+        {
+
+            if (Mathf.Abs(rb.velocity.magnitude) > 0.05)
+            {
+                animator.SetFloat("Horizontal", rb.velocity.normalized.x);
+                animator.SetFloat("Vertical", rb.velocity.normalized.y);
+                animator.SetBool("isWalking", true);
+            }
+            else
+            {
+                animator.SetBool("isWalking", false);
+            }
+        }
+
     }
 
     public virtual void AI(float time)
@@ -123,7 +139,7 @@ public class NPCMovement : Movement
 
     private bool WalkToPoint(Transform point)
     {
-        ManageForce((point.position-transform.position).normalized*acceleration);
+        ManageForce((((Vector2)point.position-(Vector2)transform.position).normalized)*acceleration);
         if (Vector2.Distance(point.position, transform.position) < .2f)
         {
             return true;
@@ -154,12 +170,13 @@ public class NPCMovement : Movement
         {
 
             //maybe change this in the future to let NPCs swap between weapons.
-            if (npc.GetInventory().GetEquippedWeapons()[0].GetID() != 0)
+            if (npc.GetInventory().equippedWeapons[0].item.description != "")
             {
-                if (npc.GetInventory().GetEquippedWeapons()[0].GetType().IsSubclassOf(typeof(MeleeWeapons)))
+                WeaponObject weapon = npc.GetInventory().equippedWeapons[0].item as WeaponObject;
+                if (weapon.weaponType == WeaponObject.WeaponType.Melee)
                 {
 
-                    MeleeWeapons weapon = (MeleeWeapons)npc.GetInventory().GetEquippedWeapons()[0];
+                    //MeleeWeapons weapon = (MeleeWeapons)npc.GetInventory().GetEquippedWeapons()[0];
                     Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(gameObject.transform.position + (Player.instance.transform.position - transform.position).normalized * 2f, weapon.GetAttackRange());
                     foreach (Collider2D enemy in hitEnemies)
                     {

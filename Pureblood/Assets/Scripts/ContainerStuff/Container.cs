@@ -22,11 +22,9 @@ public class Container : MonoBehaviour
         
         theInventory.Add(item);
 
-        if (item.GetType().IsSubclassOf(typeof(Weapons)))
+        if (item is Weapons weapon)
         {
-            Weapons weapon = (Weapons)item;
             weapons.Add(weapon);
-
         }
 
         else if (item.GetType().IsSubclassOf(typeof(Armor)))
@@ -38,7 +36,11 @@ public class Container : MonoBehaviour
         else if (item.GetType().IsSubclassOf(typeof(Consumables)))
         {
             Consumables consumable = (Consumables)item;
-            consumables.Add(consumable);
+            if(consumable.GetStackAmount() == 0)
+            {
+                consumables.Add(consumable);
+            }
+            
         }
     }
 

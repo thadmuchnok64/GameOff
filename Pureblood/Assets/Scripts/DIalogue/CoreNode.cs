@@ -28,4 +28,20 @@ public class CoreNode : Node {
     {
         return -1;
     }
+
+    public virtual int GetFinishedQuestID()
+    {
+        return -1;
+    }
+
+    public virtual int GetToggledEntity()
+    {
+        return -1;
+    }
+
+    public virtual bool CheckIfActivatesShop(string name)
+    {
+        return false;
+    }
+
 }

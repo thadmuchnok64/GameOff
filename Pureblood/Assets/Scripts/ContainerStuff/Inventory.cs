@@ -8,9 +8,14 @@ public class Inventory : Container
     [Tooltip("You should probably check this for the player, and manually call GenerateInventory() for NPCs when they become hostile. That seems like the best practice.")]
     [SerializeField] bool generateInventoryOnAwake = false;
     //for syncing
+    /*OLD CODE
     Weapons[] equippedWeapons = new Weapons[3];
     Armor[] equippedArmors = new Armor[2];
     Consumables[] equippedConsumables = new Consumables[5];
+    */
+    WeaponObject[] equippedWeapons = new WeaponObject[3];
+    ArmorObject[] equippedArmors = new ArmorObject[2];
+    ConsumableObject[] equippedConsumables = new ConsumableObject[5];
 
     private int equippedConsumable = 0;
 
@@ -30,51 +35,51 @@ public class Inventory : Container
     {
         for (int i = 0; i < 5; i++)
         {
-            equippedConsumables[i] = new Consumables();
+            equippedConsumables[i] = new ConsumableObject();
         }
         for (int i = 0; i < 3; i++)
         {
-            equippedWeapons[i] = new Weapons();
+            equippedWeapons[i] = new WeaponObject();
         }
         for (int i = 0; i < 2; i++)
         {
-            equippedArmors[i] = new Armor();
+            equippedArmors[i] = new ArmorObject();
         }
     }
 
-    public Weapons[] GetEquippedWeapons()
+    public WeaponObject[] GetEquippedWeapons()
     {
         return equippedWeapons;
     }
 
-    public Armor[] GetEquippedArmor()
+    public ArmorObject[] GetEquippedArmor()
     {
         return equippedArmors;
     }
 
-    public Consumables[] GetEquippedConsumables()
+    public ConsumableObject[] GetEquippedConsumables()
     {
         return equippedConsumables;
     }
 
-    public void EquipWeapon(int slot, Weapons weapon)
+    public void EquipWeapon(int slot, WeaponObject weapon)
     {
         equippedWeapons[slot] = weapon;
     }
 
-    public void EquipArmor(int slot, Armor armor)
+    public void EquipArmor(int slot, ArmorObject armor)
     {
         equippedArmors[slot] = armor;
     }
 
-    public void EquipConsumable(int slot, Consumables con)
+    public void EquipConsumable(int slot, ConsumableObject con)
     {
         equippedConsumables[slot] = con;
     }
 
 
 
-    public Consumables GetNextConsumable()
+    public ConsumableObject GetNextConsumable()
     {
         bool found = false;
         equippedConsumable ++;
@@ -82,7 +87,7 @@ public class Inventory : Container
         {
             while (equippedConsumable < equippedConsumables.Length)
             {
-                if (equippedConsumables[equippedConsumable].GetID()==0) {
+                if (equippedConsumables[equippedConsumable].itemName == "") {
                     equippedConsumable++;
                 }
                 else

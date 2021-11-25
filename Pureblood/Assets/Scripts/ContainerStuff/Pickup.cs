@@ -24,7 +24,7 @@ public class Pickup : MonoBehaviour
             {
                 Weapons c = ItemList.instance.GetItem(itemId) as Weapons;
             }
-            contactedObject.GetComponent<Entity>().GetInventory().AddItem(ItemList.instance.GetItem(itemId));
+           // contactedObject.GetComponent<Entity>().GetInventory().AddItem(ItemList.instance.GetItem(itemId));
             Destroy(gameObject);
         }
     }

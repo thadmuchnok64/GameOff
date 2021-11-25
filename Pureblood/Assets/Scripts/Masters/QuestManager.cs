@@ -49,7 +49,7 @@ public class QuestManager : MonoBehaviour
 
     public bool AddQuest(int id)
     {
-
+        
         foreach(Quest quest in listOfActiveQuests)
         {
             if (quest.questID == id)
@@ -60,6 +60,7 @@ public class QuestManager : MonoBehaviour
         }
         if (id < questList.Length)
         {
+            questList[id].isActive = true;
             listOfActiveQuests.Add(questList[id]);
         }
         else
@@ -122,10 +123,11 @@ public class QuestManager : MonoBehaviour
     private void GiveQuestRewardsToPlayer(Quest q)
     {
         Player.instance.AddPurity(q.purity);
-        for (int i = 0; i < q.rewardItemsIDs.Length;i++)
+        for (int i = 0; i < q.rewardItems.Length;i++)
         {
-      
-            if (ItemList.instance.GetItem(q.rewardItemsIDs[i]).GetType().IsSubclassOf(typeof(Consumables)))
+            Player.instance.theInventory.AddItem(q.rewardItems[i], 1);
+            /*
+            if (q.rewardItems[i].GetType().IsSubclassOf(typeof(ConsumableObject)))
             {
                 Consumables c = ItemList.instance.GetItem(q.rewardItemsIDs[i]) as Consumables;
                 c.AddQuantity(q.rewardItemQuantities[i]);
@@ -134,7 +136,8 @@ public class QuestManager : MonoBehaviour
             {
                 Weapons c = ItemList.instance.GetItem(q.rewardItemsIDs[i]) as Weapons;
             }
-            Player.instance.GetInventory().AddItem(ItemList.instance.GetItem(q.rewardItemsIDs[i]));
+            */
+            //Player.instance.GetInventory().AddItem(ItemList.instance.GetItem(q.rewardItemsIDs[i]));
 
         }
     }

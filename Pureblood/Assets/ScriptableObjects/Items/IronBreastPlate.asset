@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5464c5d71eb747c4091e0f386a5dc133, type: 3}
+  m_Name: IronBreastPlate
+  m_EditorClassIdentifier: 
+  itemName: Iron Breastplate
+  sprite: {fileID: -8347464844225738067, guid: 362de82a3e04ecb4ea1768ff72220034, type: 3}
+  prefab: {fileID: 0}
+  type: 2
+  description: Wear this
+  maxStackAmount: 1
+  buyValue: 100
+  sellValue: 20
+  constitutionBonus: 5
+  enduranceBonus: 0
+  equipSlot: 0

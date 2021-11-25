@@ -108,6 +108,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "Parry",
+                    "type": "Button",
+                    "id": "4951d167-d535-46cd-ad7c-7837c4645f6a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -339,6 +347,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "WeaponThree",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "332990b2-f3a8-4076-b72c-fca3d867fbc3",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Parry",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

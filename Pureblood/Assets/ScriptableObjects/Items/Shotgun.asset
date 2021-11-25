@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a26d0cbdee1ffd6419f55663ff06833e, type: 3}
+  m_Name: Shotgun
+  m_EditorClassIdentifier: 
+  itemName: Shotgun
+  sprite: {fileID: 1292341447148651015, guid: 362de82a3e04ecb4ea1768ff72220034, type: 3}
+  prefab: {fileID: 0}
+  type: 0
+  description: Shoot Gun
+  maxStackAmount: 1
+  buyValue: 0
+  sellValue: 0
+  damage: 7
+  baseDamage: 2
+  scalingMultiplier: 0.5
+  scalingStat: Dexterity
+  weaponRange: 0
+  pissMeterGain: 3
+  staminaDrain: 0
+  pissDrain: 0
+  cooldown: 1.7
+  weaponType: 1
+  projectileAmount: 8
+  bulletObject: {fileID: 7576088364861101037, guid: f08cead6350eae541830fc3320bfd764, type: 3}
+  recoilAmount: 0.75
+  spread: 15
+  attackSounds:
+  - {fileID: 8300000, guid: 176cbb3406095e1409b420ac94752afe, type: 3}
+  - {fileID: 8300000, guid: 0ab4f3977f214d644982fcb2ef6f98e8, type: 3}
+  - {fileID: 8300000, guid: b219dc0389fe6c542ba5b04e86e4b5d3, type: 3}
+  - {fileID: 8300000, guid: cd6bb8fbbd921cd49a7d850ec7fccedc, type: 3}
+  drySounds:
+  - {fileID: 8300000, guid: 8dc6e83f0f20d2e40aab1bd5bbe5af65, type: 3}
+  - {fileID: 8300000, guid: 963aa5fc26136cb4bbc49f4979d42523, type: 3}
+  - {fileID: 8300000, guid: bf81b70b9267fff4b9d4cf6b728fbec6, type: 3}
+  animatorOverrideController: {fileID: 22100000, guid: 9772846f19e303342a770582f88c2eae, type: 2}
+  weight: 800

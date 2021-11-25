@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a26d0cbdee1ffd6419f55663ff06833e, type: 3}
+  m_Name: StrSword
+  m_EditorClassIdentifier: 
+  itemName: Strength Sword
+  sprite: {fileID: 21300000, guid: 8c79c37e3e734434ab6cfb452357c880, type: 3}
+  prefab: {fileID: 0}
+  type: 0
+  description: You have really nice arms ;) Good for swinging things ;))
+  maxStackAmount: 1
+  buyValue: 0
+  sellValue: 0
+  damage: 20
+  baseDamage: 10
+  scalingMultiplier: 1
+  scalingStat: Strength
+  weaponRange: 1
+  pissMeterGain: 10
+  staminaDrain: 20
+  pissDrain: 0
+  cooldown: 0.7
+  weaponType: 0
+  projectileAmount: 0
+  bulletObject: {fileID: 0}
+  recoilAmount: 0
+  spread: 0
+  attackSounds: []
+  drySounds: []
+  animatorOverrideController: {fileID: 22100000, guid: 05952e2e4c4556840b11f1af747734d3, type: 2}
+  weight: 0

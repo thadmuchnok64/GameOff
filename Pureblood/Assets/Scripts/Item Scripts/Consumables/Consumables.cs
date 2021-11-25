@@ -23,7 +23,7 @@ public class Consumables : Items
 
     public bool SubtractQuantity(int x)
     {
-        if (stackAmount - x <= 0)
+        if (stackAmount - x < 0)
         {
             return false;
         }
@@ -35,7 +35,10 @@ public class Consumables : Items
 
         
     }
-
+    public int GetStackAmount()
+    {
+        return stackAmount;
+    }
     
 
 }

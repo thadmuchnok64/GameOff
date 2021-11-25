@@ -7,8 +7,14 @@ using UnityEngine.UI;
 public class DialogueManager : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI dialogueText;
+    [SerializeField] Transform diaBox;
     [SerializeField] TextMeshProUGUI[] choiceButtons;
     [SerializeField] GameObject choiceWindow;
+    [SerializeField] GameObject extraDiabox;
+    [SerializeField] TextMeshProUGUI extraDialogueTex;
+    private Queue<string> commonDialogues;
+    private Queue<Transform> commonPositions;
+
     //[SerializeField] TextMeshProUGUI exitButton;
     [SerializeField] string nameColor;
     //[SerializeField] string name;
@@ -20,7 +26,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] Sprite playerImage;
     [SerializeField] AudioClip[] playerSounds;
     [SerializeField] TextMeshProUGUI overflow;
-    private Transform playerTran;
+    private Transform[] playerTran;
     private Color charColor;
     private string charName;
     private Sprite portrait;
@@ -33,6 +39,8 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] RectTransform box;
     public bool processRunning;
     private AudioClip[] characterSounds;
+    private int charIndex;
+    public Shop shop;
     //[SerializeField] Animator characterAnim;
     //[SerializeField] AudioSource aud;
 
@@ -42,6 +50,10 @@ public class DialogueManager : MonoBehaviour
     private void Start()
     {
         processRunning = false;
+        commonDialogues = new Queue<string>();
+        commonPositions = new Queue<Transform>();
+        StartCoroutine(CommonDialogue());
+        
     }
     #region Singleton Pattern
     public static DialogueManager instance;
@@ -72,10 +84,12 @@ public class DialogueManager : MonoBehaviour
         StartCoroutine(InitiateDialogueDelay());
     }
 
-    public void StartDialogue(DialogueGraph dg,Transform t )
+    public void StartDialogue(DialogueGraph dg,Transform[] t )
     {
+        charIndex = 0;
         playerTran = t;
-        dialogueText.transform.position = playerTran.position + new Vector3(0, 2, 0);
+        diaBox.transform.position = playerTran[0].position + new Vector3(0, 2, 0);
+        CameraScript.instance.AddPointOfFocus(dialogueText.transform);
         CameraScript.instance.AddPointOfFocus(dialogueText.transform);
         charQueue = new Queue<char>();
         charQueue.Clear();
@@ -99,10 +113,35 @@ public class DialogueManager : MonoBehaviour
         StartCoroutine(InitiateDialogueDelay());
     }
 
+    public void StartIndirectDialogue(string s, Transform pos)
+    {
+        commonDialogues.Enqueue(s);
+        commonPositions.Enqueue(pos);
+    }
+
+    private IEnumerator CommonDialogue()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(1);
+            if (commonDialogues.Count > 0)
+            {
+                extraDiabox.gameObject.SetActive(true);
+
+                extraDialogueTex.text = commonDialogues.Dequeue();
+                extraDiabox.transform.position = commonPositions.Dequeue().position+new Vector3(0,1.5f,0);
+                yield return new WaitForSeconds(4);
+                extraDiabox.gameObject.SetActive(false);
+
+            }
+
+        }
+    }
+
     private IEnumerator InitiateDialogueDelay()
     {
         //characterImage.sprite = portrait;
-        yield return new WaitForSeconds(.3f);
+        yield return new WaitForSeconds(.2f);
         IterateDialogue();
     }
 
@@ -124,14 +163,29 @@ public class DialogueManager : MonoBehaviour
 
     private void IterateDialogue()
     {
-        dialogueText.transform.position = playerTran.position + new Vector3(0, 2,0);
-        dialogueText.text = "<color=#" + ColorUtility.ToHtmlStringRGBA(charColor) + ">" + charName + ":</color> ";
+        if (graph.currentNode.GetToggledEntity() != -1)
+        {
+            charIndex = graph.currentNode.GetToggledEntity();
+        }
+        diaBox.gameObject.SetActive(true);
+        diaBox.transform.position = playerTran[charIndex].position + new Vector3(0, 2,0);
+        dialogueText.text = "";
+       // dialogueText.text = "<color=#" + ColorUtility.ToHtmlStringRGBA(charColor) + ">" + charName + ":</color> ";
         // characterImage.sprite = portrait;
         //harAnim.Play("Hop");
         //oundMaster.instance.PlayRandomSound(characterSounds);
         if (graph.currentNode.GetGivenQuestID() != -1)
         {
             QuestManager.instance.AddQuest(graph.currentNode.GetGivenQuestID());
+        }
+        if (graph.currentNode.GetFinishedQuestID() != -1)
+        {
+           
+            QuestManager.instance.SetQuestToComplete(graph.currentNode.GetFinishedQuestID());
+        }
+        if (graph.currentNode.CheckIfActivatesShop(charName)&&shop!=null)
+        {
+            shop.SetUpShop(charName);
         }
 
         if (graph.currentNode==null||graph.currentNode.IsEndPoint())
@@ -210,6 +264,7 @@ public class DialogueManager : MonoBehaviour
         anim.StopPlayback();
         anim.SetBool("Active", false);
         choiceWindow.SetActive(false);
+        CameraScript.instance.RemovePointOfFocus();
         CameraScript.instance.RemovePointOfFocus();
         Player.instance.currentState = Entity.EntityStates.IDLE;
         StartCoroutine(EndDialogueCor());
@@ -312,7 +367,7 @@ public class DialogueManager : MonoBehaviour
     private IEnumerator EndDialogueCor()
     {
         yield return new WaitForSeconds(4);
-        dialogueText.text = "";
+        diaBox.gameObject.SetActive(false);
     }
 
     void UpdateBoxes()

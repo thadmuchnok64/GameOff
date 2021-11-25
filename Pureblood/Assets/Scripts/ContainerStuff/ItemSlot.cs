@@ -5,29 +5,54 @@ using UnityEngine.UI;
 
 public class ItemSlot : MonoBehaviour
 {
-
-    public Items item = new Items();
+    public InventorySlot item;
+    public int quantity;
+    public Items itemO = new Items();
     [SerializeField] Image iconImage;
     [SerializeField] TMPro.TextMeshProUGUI text;
     int ID = 0;
 
-    public void SetItem(Items i)
+    public void SetItem(InventorySlot i)
     {
         if(i == null)
         {
             iconImage.sprite = null;
+            item = null;
+            if (text != null)
+                text.text = "" + item.item.name + " : " + item.item.description;
         }
         else {
             item = i;
-            iconImage.sprite = item.GetIcon();
+            iconImage.sprite = item.item.sprite;
             if (text != null)
-                text.text = "" + item.GetName() + " : " + item.GetDscription();
-            ID = item.GetID();
+                text.text = "" + item.item.name + " : " + item.item.description;
+            //ID = item.GetID();
         }
         
         
     }
-    public Items GetItem()
+
+    //Needed to make this to display quest item rewards.
+    public void SetItem(ItemObject i, int quant)
+    {
+        if (i == null)
+        {
+            iconImage.sprite = null;
+        }
+        else
+        {
+            item= new InventorySlot(i,quant);
+            quantity = quant;
+            iconImage.sprite = item.item.sprite;
+            if (text != null)
+                text.text = "" + item.item.name + " : " + item.item.description;
+            //ID = item.GetID();
+        }
+
+
+    }
+
+    public InventorySlot GetItem()
     {
         return item;
     }

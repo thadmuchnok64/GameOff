@@ -6,17 +6,20 @@ using System;
 public class Player : Entity
 {
     
+    
     private float maxPiss;
     private float currentPiss;
     private int purity = 1000000;
     private int purityToLevel = 300;
     public static Player instance;
-    private Inventory inventory;
-    private Weapons equippedWeapon;
-    Sword temp;
+    //private Inventory inventory;
+    public WeaponObject equippedWeapon;
+    public InventorySlot equippedConsumable;
+    public ConsumablesFunctions consumablesFunctions;
+    //Sword temp;
     public override void Awake()
     {
-        inventory = gameObject.GetComponent<Inventory>();
+        //inventory = gameObject.GetComponent<Inventory>();
         //temp = new Sword();
         //inventory.AddItem(temp);
         //Debug.Log(inventory.GetWeapons().Count);
@@ -24,6 +27,7 @@ public class Player : Entity
         base.Awake();
         currentPiss = 0;
         InvokeRepeating("test", 10, 10);
+        consumablesFunctions = new ConsumablesFunctions();
         //EquipItemInHand(temp);
         #region singleton
 
@@ -54,8 +58,13 @@ public class Player : Entity
 
     //handling for equipping an item
     //Checks type before applying bonuses
-    public void EquipItemInHand(Items equippedItem)
+    public void EquipItemInHand(InventorySlot equippedItem)
     {
+        equippedWeapon = equippedItem.item as WeaponObject;
+        equippedWeapon.calcDamage(strength, dexterity, divinity);
+        damage = equippedWeapon.GetDamage();
+
+        /*
         if(equippedItem.GetType().IsSubclassOf(typeof(Weapons)))
         {
             Weapons weapon = GetInventory().GetEquippedWeapons()[0];
@@ -86,12 +95,9 @@ public class Player : Entity
                 endurance += armor.GetEnduranceIncrease();
             }    
         }
+        */
     }
-
-    public string GetEquippedWeaponClass()
-    {
-        return equippedWeapon.GetWeaponClass();
-    }
+   
 
     public int GetPurity()
     {
@@ -141,10 +147,34 @@ public class Player : Entity
     }
 
 
-    public Weapons GetWeapon()
+    public WeaponObject GetWeapon()
     {
         return equippedWeapon;
     }
+    public InventoryObject PlayerInv()
+    {
+        return theInventory;
+    }
 
+    private void OnApplicationQuit()
+    {
+        theInventory.Container.Clear();
+        Array.Clear(theInventory.equippedArmors, 0, theInventory.equippedArmors.Length);
+        Array.Clear(theInventory.equippedConsumables, 0, theInventory.equippedConsumables.Length);
+        Array.Clear(theInventory.equippedWeapons, 0, theInventory.equippedWeapons.Length);
+    }
+
+    public IEnumerator ReCalcDamage(float duration)
+    {
+        if(equippedWeapon != null)
+        {
+            equippedWeapon.calcDamage(strength, dexterity, divinity);
+            damage = equippedWeapon.GetDamage();
+            yield return new WaitForSeconds(duration);
+            equippedWeapon.calcDamage(strength, dexterity, divinity);
+            damage = equippedWeapon.GetDamage();
+        }
+        
+    }
 
 }
