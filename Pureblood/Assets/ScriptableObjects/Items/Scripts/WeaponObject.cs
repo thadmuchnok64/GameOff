@@ -14,13 +14,19 @@ public class WeaponObject : ItemObject
     public float pissDrain;
     public float cooldown;
     public WeaponType weaponType;
-    public enum WeaponType { Melee, Ranged}
+    public enum WeaponType { Melee, Ranged }
 
     public int projectileAmount;
     public GameObject bulletObject;
+    public GameObject gunParticles;
+
+    
     public float recoilAmount;
     public float spread;
     public AudioClip[] attackSounds, drySounds;
+    public AudioClip equipSound;
+    public AudioClip[] impactSounds;
+
     public AnimatorOverrideController animatorOverrideController;
     [Tooltip("Affects how much firing this weapon will push the character backwards")]
     public float weight;
@@ -66,5 +72,9 @@ public class WeaponObject : ItemObject
     public float GetAttackRange()
     {
         return weaponRange;
+    }
+    public float GetPissDrain()
+    {
+        return pissDrain;
     }
 }

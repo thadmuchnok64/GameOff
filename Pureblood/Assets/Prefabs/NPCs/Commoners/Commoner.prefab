@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1751405374297917706}
   - component: {fileID: 1751405374297917701}
-  - component: {fileID: 1751405374297917703}
   - component: {fileID: 1751405374297917707}
   - component: {fileID: 1751405374297917704}
   - component: {fileID: 1751405374297917705}
@@ -19,6 +18,7 @@ GameObject:
   - component: {fileID: 8853934199608750234}
   - component: {fileID: 4155430261347256842}
   - component: {fileID: 8150611582740222370}
+  - component: {fileID: -253527299282138292}
   m_Layer: 0
   m_Name: Commoner
   m_TagString: NPC
@@ -91,32 +91,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1751405374297917703
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1751405374297917702}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e0c2ecd14be09249a135f0374f97b3d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  strength: 10
-  dexterity: 10
-  baseConstitution: 10
-  constitution: 10
-  baseEndurance: 10
-  endurance: 10
-  divinity: 10
-  level: 1
-  damage: 10
-  poise: 100
-  theInventory: {fileID: 0}
-  currentState: 0
-  name: Lenny
-  hostile: 0
 --- !u!114 &1751405374297917707
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -177,6 +151,7 @@ MonoBehaviour:
   attackDelay: 0.15
   parryFrames: 0
   attackCooldown: 0.8
+  whatToDoIfAgrod: 0
   animator: {fileID: 8853934199608750234}
 --- !u!50 &1751405374297917710
 Rigidbody2D:
@@ -214,7 +189,34 @@ MonoBehaviour:
   dialogueGraph: []
   extraTransform: []
   secondaryDialogues: []
+  painDialogues:
+  - Aaaugh!
+  - Ow!
+  - God that hurt...
+  - Ouch!
+  - That one hit different.
+  - Cut it out!!!
+  - I think that one hit a bone.
+  - Oh god... is that blood?
+  hostileDialogues:
+  - I'm gonna kill you!
+  - Die! Die! Die!
+  - Go to hell!
+  - I'm ending you now.
+  - Die, scum!
+  - Hahaha you suck!
+  - You're going six feet under
+  - Lets finish this!
+  fleeingDialogues:
+  - Leave me alone!
+  - Go away!
+  - Someboy help!
+  - I'm being attacked! Help!
+  - Somebody get the law!
+  - Stop! Please!
+  - Get me a doctor!
   automaticallyInitiatesDialogue: 1
+  dialogueIteration: 0
 --- !u!95 &8853934199608750234
 Animator:
   serializedVersion: 3
@@ -265,3 +267,30 @@ MonoBehaviour:
   updateConstantly: 1
   changeChildren: 0
   layerOffset: 0
+--- !u!114 &-253527299282138292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1751405374297917702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a4dbbaa4f0223a488566e2325d8d9d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  strength: 10
+  dexterity: 10
+  baseConstitution: 10
+  constitution: 10
+  baseEndurance: 10
+  endurance: 10
+  divinity: 10
+  level: 0
+  damage: 20
+  poise: 100
+  theInventory: {fileID: 0}
+  currentState: 0
+  name: Guy
+  hostile: 0
+  dt: {fileID: 0}

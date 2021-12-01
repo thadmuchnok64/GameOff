@@ -10,13 +10,14 @@ public class ItemSlot : MonoBehaviour
     public Items itemO = new Items();
     [SerializeField] Image iconImage;
     [SerializeField] TMPro.TextMeshProUGUI text;
+    public Sprite emptySprite;
     int ID = 0;
 
     public void SetItem(InventorySlot i)
     {
         if(i == null)
         {
-            iconImage.sprite = null;
+            iconImage.sprite = emptySprite;
             item = null;
             if (text != null)
                 text.text = "" + item.item.name + " : " + item.item.description;
@@ -37,7 +38,7 @@ public class ItemSlot : MonoBehaviour
     {
         if (i == null)
         {
-            iconImage.sprite = null;
+            iconImage.sprite = emptySprite;
         }
         else
         {

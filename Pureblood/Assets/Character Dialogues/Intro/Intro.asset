@@ -76,7 +76,7 @@ MonoBehaviour:
   choice3: 0
   choice4: 0
   answer: I need to help the other passengers before someone gets hurt.
-  response: 
+  response: Aaahhhg...
 --- !u!114 &-44459699092708069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,7 +153,7 @@ MonoBehaviour:
   choice3: 0
   choice4: 0
   answer: 'As long as these things breathe, I can kill them. '
-  response: 
+  response: Mmmh...
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,7 +171,7 @@ MonoBehaviour:
   - {fileID: -44459699092708069}
   - {fileID: 9077377611882867695}
   - {fileID: -5819750631401270236}
-  currentNode: {fileID: 0}
+  currentNode: {fileID: 1606971246564146814}
 --- !u!114 &1606971246564146814
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -337,4 +337,4 @@ MonoBehaviour:
   choice4: 0
   answer: " I don\u2019t know what those are, but they\u2019re grotesque... I have
     to put them down."
-  response: 
+  response: Aaah...

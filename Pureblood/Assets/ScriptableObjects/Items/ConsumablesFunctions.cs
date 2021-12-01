@@ -13,6 +13,9 @@ public class ConsumablesFunctions : MonoBehaviour
                 Player.instance.StartCoroutine(Player.instance.BuffStregnth(5, 40));
                 Player.instance.StartCoroutine(Player.instance.ReCalcDamage(40));
                 break;
+            case "Beer":
+                Player.instance.TakeDamage(-Player.instance.GetMaxHealth());
+                break;
         }
     }
 

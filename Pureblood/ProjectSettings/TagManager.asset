@@ -50,3 +50,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Ceiling
+    uniqueID: 3667981401
+    locked: 0
+  - name: UI
+    uniqueID: 15333563
+    locked: 0

@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a26d0cbdee1ffd6419f55663ff06833e, type: 3}
+  m_Name: Straight Sword
+  m_EditorClassIdentifier: 
+  itemName: Straight Sword
+  sprite: {fileID: 21300000, guid: aa11025e2f068bc43a2d728d46108cfb, type: 3}
+  prefab: {fileID: 0}
+  type: 0
+  description: Try and hit your foes with the pointy end. Scales with Strength
+  maxStackAmount: 1
+  buyValue: 0
+  sellValue: 0
+  damage: 20
+  baseDamage: 10
+  scalingMultiplier: 1
+  scalingStat: Strength
+  weaponRange: 1
+  pissMeterGain: 10
+  staminaDrain: 20
+  pissDrain: 0
+  cooldown: 0.7
+  weaponType: 0
+  projectileAmount: 0
+  bulletObject: {fileID: 0}
+  gunParticles: {fileID: 0}
+  recoilAmount: 0
+  spread: 0
+  attackSounds: []
+  drySounds: []
+  equipSound: {fileID: 8300000, guid: f13da1c9b35b9214caaee4562e7c69b3, type: 3}
+  impactSounds:
+  - {fileID: 8300000, guid: 68ec9e81aa4294d4280dacc6842bc332, type: 3}
+  - {fileID: 8300000, guid: 90a78e59c3daefd469493e233245bc07, type: 3}
+  animatorOverrideController: {fileID: 22100000, guid: 05952e2e4c4556840b11f1af747734d3, type: 2}
+  weight: 0

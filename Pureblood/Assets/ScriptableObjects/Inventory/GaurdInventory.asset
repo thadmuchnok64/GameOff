@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 220e24a559b701948893f5a894b01da3, type: 3}
+  m_Name: GaurdInventory
+  m_EditorClassIdentifier: 
+  Container: []
+  equippedWeapons:
+  - item: {fileID: 11400000, guid: b76c80abe79550447b84f62307f71b2f, type: 2}
+    amount: 0
+    maxAmount: 0
+  - item: {fileID: 0}
+    amount: 0
+    maxAmount: 0
+  - item: {fileID: 0}
+    amount: 0
+    maxAmount: 0
+  equippedArmors:
+  - item: {fileID: 0}
+    amount: 0
+    maxAmount: 0
+  - item: {fileID: 0}
+    amount: 0
+    maxAmount: 0
+  equippedConsumables:
+  - item: {fileID: 0}
+    amount: 0
+    maxAmount: 0
+  - item: {fileID: 0}
+    amount: 0
+    maxAmount: 0
+  - item: {fileID: 0}
+    amount: 0
+    maxAmount: 0
+  - item: {fileID: 0}
+    amount: 0
+    maxAmount: 0
+  - item: {fileID: 0}
+    amount: 0
+    maxAmount: 0

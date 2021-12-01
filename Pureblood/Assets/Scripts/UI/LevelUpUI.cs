@@ -37,7 +37,6 @@ public class LevelUpUI : MonoBehaviour
             Destroy(this);
         }
 
-
         UpdateStats();
     }
 
@@ -71,7 +70,7 @@ public class LevelUpUI : MonoBehaviour
         LevelStat(Stat.Endurance, increase, FinishedStatBuy);
     }
 
-#endregion
+    #endregion
 
 
     public void UpdateStats()
@@ -81,7 +80,6 @@ public class LevelUpUI : MonoBehaviour
         divText.text = "" + Player.instance.GetDivinity();
         endText.text = "" + Player.instance.GetEndurance();
         conText.text = "" + Player.instance.GetConstitution();
-        purityText.text = "" + Player.instance.GetPurity();
         reqPurityText.text = "" + Player.instance.GetPurityToLevel();
     }
 

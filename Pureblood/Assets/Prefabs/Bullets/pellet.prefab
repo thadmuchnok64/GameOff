@@ -97,6 +97,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d9330c685aa4d444bd3a1be437625dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blood: {fileID: 4432937003083380721, guid: c706cbe3a7a8be44abda08f57ebfa1f9, type: 3}
+  parried:
+  - {fileID: 8300000, guid: 54ab5f4742c179a4db56426156bf53f3, type: 3}
+  - {fileID: 8300000, guid: 067f71ddb7d759a4c969dd91f8a6963d, type: 3}
 --- !u!50 &7576088364861101033
 Rigidbody2D:
   serializedVersion: 4
@@ -142,5 +146,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.125, y: 0.125}
+  m_Size: {x: 0.7, y: 0.7}
   m_EdgeRadius: 0

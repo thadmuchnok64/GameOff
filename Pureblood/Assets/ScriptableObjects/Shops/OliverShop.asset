@@ -16,6 +16,21 @@ MonoBehaviour:
   - item: {fileID: 11400000, guid: ec878c24ff422f1428c5c96792dee6a6, type: 2}
     amount: 5
     maxAmount: 10
+  - item: {fileID: 11400000, guid: b7f8e55389af2904794fbcf7897957cc, type: 2}
+    amount: 999
+    maxAmount: 999
+  - item: {fileID: 11400000, guid: b7f8e55389af2904794fbcf7897957cc, type: 2}
+    amount: 999
+    maxAmount: 999
+  - item: {fileID: 11400000, guid: b7f8e55389af2904794fbcf7897957cc, type: 2}
+    amount: 999
+    maxAmount: 999
+  - item: {fileID: 11400000, guid: b7f8e55389af2904794fbcf7897957cc, type: 2}
+    amount: 999
+    maxAmount: 999
+  - item: {fileID: 11400000, guid: b7f8e55389af2904794fbcf7897957cc, type: 2}
+    amount: 999
+    maxAmount: 999
   equippedWeapons:
   - item: {fileID: 0}
     amount: 0

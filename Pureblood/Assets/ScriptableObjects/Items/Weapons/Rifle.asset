@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a26d0cbdee1ffd6419f55663ff06833e, type: 3}
+  m_Name: Rifle
+  m_EditorClassIdentifier: 
+  itemName: Pistol
+  sprite: {fileID: 21300000, guid: df70355c14f2fac40a3e31b038072345, type: 3}
+  prefab: {fileID: 0}
+  type: 0
+  description: A wonderfully designed weapon, made for the sharpest of shooters.
+    Scales with Dexterity.
+  maxStackAmount: 1
+  buyValue: 800
+  sellValue: 200
+  damage: 25
+  baseDamage: 25
+  scalingMultiplier: 1.9
+  scalingStat: Dexterity
+  weaponRange: 0
+  pissMeterGain: 18
+  staminaDrain: 0
+  pissDrain: 0
+  cooldown: 1.8
+  weaponType: 1
+  projectileAmount: 1
+  bulletObject: {fileID: 1776385465145668522, guid: 4c7f852394c83c543a9fa75817cca3ad, type: 3}
+  gunParticles: {fileID: 8460022137434703218, guid: d04c22b5a49e4a44380e004a0be3b9f0, type: 3}
+  recoilAmount: 0.45
+  spread: 0.05
+  attackSounds:
+  - {fileID: 8300000, guid: 2a13ba887ee9695429609c0d10c001c2, type: 3}
+  - {fileID: 8300000, guid: 65962256c0c6ecb4b9fe26a56dee7220, type: 3}
+  - {fileID: 8300000, guid: 6f089f42d19a8e24d8433c262acc27f5, type: 3}
+  drySounds:
+  - {fileID: 8300000, guid: 56a1f8fd045c95e40997be995c2d5647, type: 3}
+  - {fileID: 8300000, guid: 243decfcf66de054ab933c022178f236, type: 3}
+  - {fileID: 8300000, guid: 722d19ad46314bf4b8a863d14cb1272a, type: 3}
+  equipSound: {fileID: 8300000, guid: 87079de5d7ffef641afa7556fbc450da, type: 3}
+  impactSounds: []
+  animatorOverrideController: {fileID: 22100000, guid: ce6835e4fa039df4cb761821bcfec080, type: 2}
+  weight: 0

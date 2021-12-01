@@ -30,8 +30,10 @@ public class Entity : MonoBehaviour
     [SerializeField] protected float damage = 20f;
     [SerializeField] protected float poise = 100f;
     private float maxHealth, maxStamina;
-    private float health, stamina;
+    protected float health, stamina;
     protected bool canRegenStam = true;
+
+    bool damageFlashing = false;
 
     public InventoryObject theInventory;
 
@@ -59,9 +61,14 @@ public class Entity : MonoBehaviour
     //Entity Takes damage
     public virtual void TakeDamage(float damage)
     {
-        if (currentState != EntityStates.DASHING)
+        if (currentState != EntityStates.DASHING && currentState != EntityStates.PARRYING)
         {
             health -= damage;
+            if(!damageFlashing && damage > 0)
+            {
+                StartCoroutine("DamageFlash");
+            }
+            
         }
 
     }
@@ -86,6 +93,14 @@ public class Entity : MonoBehaviour
         return maxHealth;
     }
 
+    public void Heal(int x)
+    {
+        health += x;
+        if (health > maxHealth)
+        {
+            health = maxHealth;
+        }
+    }
     public float GetMaxStamina()
     {
         return maxStamina;
@@ -191,11 +206,10 @@ public class Entity : MonoBehaviour
     #region InventoryManagement
 
     //private Inventory inventory;
-    private InventoryObject inventory;
 
     public InventoryObject GetInventory()
     {
-        return inventory;
+        return theInventory;
     }
 
     #endregion
@@ -232,6 +246,14 @@ public class Entity : MonoBehaviour
     }
     #endregion
 
+    public IEnumerator DamageFlash()
+    {
+        damageFlashing = true;
+        gameObject.GetComponent<SpriteRenderer>().color = new Color(0.8867924f, 0.3304557f, 0.3304557f);
+        yield return new WaitForSeconds(0.3f);
+        gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1);
+        damageFlashing = false;
+    }
     
 
 }

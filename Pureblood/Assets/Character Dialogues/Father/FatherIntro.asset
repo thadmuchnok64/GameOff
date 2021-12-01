@@ -594,6 +594,7 @@ MonoBehaviour:
     I don\u2019t know much more beyond that. I\u2019m just glad you\u2019re alright.
     We can go to the pub together later if you like? Like old times?"
   questID: 2
+  finishedQuestId: 1
 --- !u!114 &-1617254822250174815
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -792,7 +793,7 @@ MonoBehaviour:
   - {fileID: -2688866405033566222}
   - {fileID: -2537638284006512607}
   - {fileID: 3067569371930892053}
-  currentNode: {fileID: 0}
+  currentNode: {fileID: 3067569371930892053}
 --- !u!114 &2326350127613622191
 MonoBehaviour:
   m_ObjectHideFlags: 0

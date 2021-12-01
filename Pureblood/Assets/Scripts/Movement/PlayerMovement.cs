@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class PlayerMovement : Movement
 {
@@ -11,28 +12,31 @@ public class PlayerMovement : Movement
     private InputAction movement;
     private Player player;
     private bool canDash = true;
-    private bool inAnActiveState = false;
+    public bool inAnActiveState = false;
 
     public Material dashMat;
     protected SpriteRenderer spriteRenderer;
     protected ParticleSystem dashParticles;
     public Camera cam;
 
+    private RaycastHit2D hit;
+
     [SerializeField] private float dashCooldown = 0.5f;
     [SerializeField] private float dashStamDrain = 25f;
     [SerializeField] private float dashForce = 30f;
     [SerializeField] private float staminaRegenDelay = 2f;
     [SerializeField] private float IFrames = 0.3f;
-    [SerializeField] private float parryCooldown = 0.4f;
+    [SerializeField] private float parryCooldown = 0.7f;
+    [SerializeField] private GameObject blood;
 
     [SerializeField] private GameObject bullet;
     [SerializeField] private ConsumableObject bulletObject;
     [SerializeField] private GameObject swoosh;
-    [SerializeField] GameObject gunParticles;
-
+    [SerializeField] private AudioClip swooshSound;
+    [SerializeField] private AudioClip parrySound;
     
     [SerializeField] Animator animator;
-    
+    [SerializeField] TMPro.TextMeshProUGUI interactText;
     public void Awake()
     {
         controls = new Controls();
@@ -44,6 +48,43 @@ public class PlayerMovement : Movement
         thisEntity = gameObject.GetComponent<Entity>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         dashParticles = GetComponent<ParticleSystem>();
+        InvokeRepeating("CheckInteracts", 1, .1f);
+    }
+
+    private void CheckInteracts()
+    {
+        if (hit.collider != null&&player.currentState!=Entity.EntityStates.TALKING)
+        {
+            if (hit.collider.tag == "InteractableObject")
+            {
+                if (hit.collider.GetComponent<Door>() != null)
+                {
+                    interactText.text = "[F]: Travel to " + hit.collider.gameObject.GetComponent<Door>().locationName;
+                } else if (hit.collider.GetComponent<Bonfire>() != null)
+                {
+                    interactText.text = "[F]: Rest";
+                } else if (hit.collider.GetComponent<SignPost>() != null)
+                {
+                    interactText.text = "[F]: Read signpost";
+                }
+                else
+                {
+                    interactText.text = "[F]: Interact with " + hit.collider.gameObject.name;
+                }
+            }
+            else if (hit.collider.tag == "NPC")
+            {
+                NPC npc = hit.collider.gameObject.GetComponent<NPC>();
+                if (npc.dt.dialogueGraph.Length>npc.dt.dialogueIteration)
+                {
+                    interactText.text = "[F]: Talk to " + npc.GetName();
+                }
+            }
+
+        } else
+        {
+            interactText.text = "";
+        }
     }
 
     public override void Update()
@@ -79,28 +120,53 @@ public class PlayerMovement : Movement
 
     private void FixedUpdate()
     {
-        if(player.currentState!=Entity.EntityStates.TALKING)
-        ManageForce(movement.ReadValue<Vector2>() * acceleration);
-        
-        Vector2 lookDir = mousePos - rb.position;
-        float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
-        //rb.rotation = angle;
-        animator.SetFloat("Horizontal", lookDir.normalized.x);
-        animator.SetFloat("Vertical", lookDir.normalized.y);
-        if(Mathf.Abs(rb.velocity.magnitude) > 0.05)
+        if(player.currentState != Entity.EntityStates.DEAD)
         {
-            animator.SetBool("isWalking", true);
+            hit = Physics2D.Raycast(gameObject.transform.position, mousePos - rb.position, 2.5f);
+
+            if (player.currentState != Entity.EntityStates.TALKING)
+                ManageForce(movement.ReadValue<Vector2>() * acceleration);
+
+            Vector2 lookDir = mousePos - rb.position;
+            float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
+            //rb.rotation = angle;
+            animator.SetFloat("Horizontal", lookDir.normalized.x);
+            animator.SetFloat("Vertical", lookDir.normalized.y);
+            if (Mathf.Abs(rb.velocity.magnitude) > 0.05)
+            {
+                animator.SetBool("isWalking", true);
+            }
+            else
+            {
+                animator.SetBool("isWalking", false);
+            }
         }
         else
         {
-            animator.SetBool("isWalking", false);
+            int decider = Random.Range(0, 1);
+            if (decider == 0)
+            {
+                animator.Play("Death1");
+            }
+            else
+            {
+                animator.Play("Death2");
+            }
+
+            if (player.bonfireLastRestedAt != null)
+            {
+                player.bonfireLastRestedAt.TeleportToBonfire();
+            }
         }
+        
+
         //lastDirection = movement.ReadValue<Vector2>().normalized;
     }
+    
 
     public void Attack(InputAction.CallbackContext context)
     {
-        if (player.currentState != Entity.EntityStates.TALKING && player.currentState != Entity.EntityStates.ATTACKING && !inAnActiveState)
+        if (player.currentState != Entity.EntityStates.TALKING && player.currentState != Entity.EntityStates.ATTACKING && !inAnActiveState && !UIControls.instance.CheckIfAnyMenusAreOn() && player.currentState != Entity.EntityStates.DEAD)
         {
 
             if (player.GetWeapon() != null && player.GetWeapon().description != "")
@@ -112,12 +178,17 @@ public class PlayerMovement : Movement
                     WeaponObject weapon = player.equippedWeapon;
                     StartCoroutine(AttackCooldown(weapon.cooldown));
                     //swoosh
-                    //GameObject theSwoosh = Instantiate(swoosh, (Vector3)(mousePos - rb.position).normalized + gameObject.transform.position, gameObject.transform.rotation);
-                    //Vector3 v = (mousePos - (Vector2)transform.position);
-                    //float rot = Mathf.Atan2(v.y, v.x) * Mathf.Rad2Deg;
-                    //theSwoosh.transform.rotation = Quaternion.Euler(0f, 0f, rot + 180);
+                    GameObject theSwoosh = Instantiate(swoosh, (Vector3)(mousePos - rb.position).normalized * 1.5f + gameObject.transform.position, gameObject.transform.rotation);
+                    Vector3 v = (mousePos - (Vector2)transform.position);
+                    float rot = Mathf.Atan2(v.y, v.x) * Mathf.Rad2Deg;
+                    theSwoosh.transform.rotation = Quaternion.Euler(0f, 0f, rot + 180);
+                    SoundMaster.instance.PlaySoundEffect(swooshSound);
+                    Destroy(theSwoosh, 0.4f);
 
                     Collider2D[] hitEnemies = Physics2D.OverlapCircleAll((Vector3)(mousePos - rb.position).normalized + gameObject.transform.position, weapon.GetAttackRange());
+
+
+                    bool playedSound = false;
                     foreach (Collider2D enemy in hitEnemies)
                     {
                         if (enemy.tag == "NPC" || enemy.tag == "Enemy")
@@ -125,9 +196,15 @@ public class PlayerMovement : Movement
                             if (enemy.gameObject.GetComponent<Entity>().currentState != Entity.EntityStates.DEAD)
                             {
                                 enemy.GetComponent<Entity>().TakeDamage(player.GetDamage());
+                                GameObject theBlood = Instantiate(blood, enemy.transform);
+                                Destroy(theBlood, 1f);
+                                enemy.attachedRigidbody.AddForce((Vector3)(mousePos - rb.position).normalized * 40, ForceMode2D.Impulse);
                                 player.SetPiss(player.GetPiss() + weapon.GetPissGain());
                             }
-
+                            if(playedSound != true)
+                            {
+                                SoundMaster.instance.PlayRandomSound(weapon.impactSounds);
+                            }
                         }
                     }
                     player.useStamina(weapon.GetStaminaDrain());
@@ -139,26 +216,44 @@ public class PlayerMovement : Movement
                 else if(player.GetWeapon().weaponType == WeaponObject.WeaponType.Ranged)
                 {
                     WeaponObject weapon = player.equippedWeapon;
-                    for(int i = 0; i < player.theInventory.Container.Count; i++)
+                    if(weapon.pissDrain > 0)
                     {
-                        if(player.theInventory.Container[i].item == bulletObject && player.theInventory.Container[i].SubtractAmount(1))
+                        if(player.GetPiss() >= weapon.pissDrain)
                         {
-                            SoundMaster.instance.PlayRandomSound(weapon.attackSounds);
-                            StartCoroutine(AttackCooldown(weapon.cooldown));
-                            ManageForce((rb.position-mousePos).normalized*weapon.weight);
-                            StartCoroutine(BulletGen(weapon));
-
-                            CameraScript.instance.AddRumble(weapon.recoilAmount);
-                            if(player.theInventory.Container[i].amount == 0)
+                            if(weapon.attackSounds.Length != 0)
                             {
-                                player.theInventory.Container.RemoveAt(i);
+                                SoundMaster.instance.PlayRandomSound(weapon.attackSounds);
                             }
-                        }
-                        else
-                        {
-                            SoundMaster.instance.PlayRandomSound(weapon.drySounds);
+                            StartCoroutine(AttackCooldown(weapon.cooldown));
+                            ManageForce((rb.position - mousePos).normalized * weapon.weight);
+                            StartCoroutine(BulletGen(weapon));
+                            player.SetPiss(player.GetPiss() - weapon.pissDrain);
                         }
                     }
+                    else
+                    {
+                        for (int i = 0; i < player.theInventory.Container.Count; i++)
+                        {
+                            if (player.theInventory.Container[i].item == bulletObject && player.theInventory.Container[i].SubtractAmount(1))
+                            {
+                                SoundMaster.instance.PlayRandomSound(weapon.attackSounds);
+                                StartCoroutine(AttackCooldown(weapon.cooldown));
+                                ManageForce((rb.position - mousePos).normalized * weapon.weight);
+                                StartCoroutine(BulletGen(weapon));
+
+                                CameraScript.instance.AddRumble(weapon.recoilAmount);
+                                if (player.theInventory.Container[i].amount == 0)
+                                {
+                                    player.theInventory.Container.RemoveAt(i);
+                                }
+                            }
+                            else
+                            {
+                                SoundMaster.instance.PlayRandomSound(weapon.drySounds);
+                            }
+                        }
+                    }
+                    
                     
                 }
             }
@@ -170,7 +265,7 @@ public class PlayerMovement : Movement
 
     IEnumerator BulletGen(WeaponObject weapon)
     {
-        Instantiate(gunParticles, (Vector3)(mousePos - rb.position).normalized + gameObject.transform.position, gameObject.transform.rotation);
+        Instantiate(weapon.gunParticles, (Vector3)(mousePos - rb.position).normalized + gameObject.transform.position, gameObject.transform.rotation);
         yield return new WaitForSeconds(.01f);
         for (int y = 0; y < weapon.projectileAmount; y++)
         {
@@ -221,7 +316,6 @@ public class PlayerMovement : Movement
     {
         if (player.currentState != Entity.EntityStates.TALKING)
         {
-            RaycastHit2D hit = Physics2D.Raycast(gameObject.transform.position,mousePos-rb.position, 5f);
             if (hit.collider != null)
             {
                 if (hit.collider.tag == "InteractableObject")
@@ -251,7 +345,10 @@ public class PlayerMovement : Movement
                 if(hit.collider.tag == "NPC")
                 {
                     NPCMovement npc = hit.collider.gameObject.GetComponent<NPCMovement>();
-                    npc.AttemptToParry();
+                    if(npc.AttemptToParry())
+                    {
+                        inAnActiveState = false;
+                    }
                 }
 
             }
@@ -301,6 +398,7 @@ public class PlayerMovement : Movement
     {
         player.currentState = Entity.EntityStates.PARRYING;
         inAnActiveState = true;
+        animator.Play("Parrying");
         yield return new WaitForSeconds(parryCooldown);
         inAnActiveState = false;
         player.currentState = Entity.EntityStates.IDLE;

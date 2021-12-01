@@ -11,6 +11,7 @@ public class ItemScript : MonoBehaviour
         if(collider.tag == "Player")
         {
             collider.GetComponent<Player>().theInventory.AddItem(item, quantity);
+            UIControls.instance.PickUpText(item.name);
             Destroy(gameObject);
         }
     }

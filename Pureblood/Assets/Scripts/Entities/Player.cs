@@ -9,13 +9,17 @@ public class Player : Entity
     
     private float maxPiss;
     private float currentPiss;
-    private int purity = 1000000;
+    private int purity = 0;
     private int purityToLevel = 300;
     public static Player instance;
+    public bool playingMusic = false;
     //private Inventory inventory;
     public WeaponObject equippedWeapon;
     public InventorySlot equippedConsumable;
     public ConsumablesFunctions consumablesFunctions;
+    public Bonfire bonfireLastRestedAt;
+
+
     //Sword temp;
     public override void Awake()
     {
@@ -27,6 +31,7 @@ public class Player : Entity
         base.Awake();
         currentPiss = 0;
         InvokeRepeating("test", 10, 10);
+        InvokeRepeating("CheckForHostiles", 4, 1.5f);
         consumablesFunctions = new ConsumablesFunctions();
         //EquipItemInHand(temp);
         #region singleton
@@ -175,6 +180,37 @@ public class Player : Entity
             damage = equippedWeapon.GetDamage();
         }
         
+    }
+
+    public void CheckForHostiles()
+    {
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, 40);
+        int enemyDeadCount = 0;
+        int enemyCount = 0;
+        foreach(Collider2D enemy in hitEnemies)
+        {
+            if(enemy.gameObject.GetComponent<NPC>() != null && enemy.gameObject.GetComponent<NPC>().hostile)
+            {
+                enemyCount++;
+                if (enemy.tag == "Enemy" && !playingMusic && enemy.GetComponent<Entity>().currentState != EntityStates.DEAD)
+                {
+                    Debug.Log("sf");
+                    playingMusic = true;
+                    StartCoroutine(SoundMaster.instance.FadeInMusic(SoundMaster.instance.basicCombatMusic));
+                }
+                else if (enemy.tag == "Enemy" && playingMusic && enemy.GetComponent<Entity>().currentState == EntityStates.DEAD)
+                {
+                    enemyDeadCount++;
+                }
+            }
+        }
+        Debug.Log(enemyCount + " enemies found");
+        Debug.Log(enemyDeadCount + " dead");
+        if (enemyCount == enemyDeadCount && enemyCount > 0)
+        {
+            playingMusic = false;
+            StartCoroutine(SoundMaster.instance.FadeOutMusic());
+        }
     }
 
 }

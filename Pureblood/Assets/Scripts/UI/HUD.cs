@@ -31,7 +31,33 @@ public class HUD : MonoBehaviour
     }
 
 
+    private int latePurity = 0;
+    private void LatePurityAdjuster()
+    {
 
+            if ((Player.instance.GetPurity() - 16000) > latePurity&& Player.instance.GetPurity() % 8 == 0)
+            {
+                latePurity = latePurity + 1000;
+            }
+            if ((Player.instance.GetPurity() - 800) > latePurity&& Player.instance.GetPurity() % 4 == 0)
+            {
+                latePurity = latePurity + 100;
+            }
+            if ((Player.instance.GetPurity() - 40) > latePurity&&Player.instance.GetPurity()%2==0)
+            {
+                latePurity = latePurity + 10;
+            }
+            if ((Player.instance.GetPurity()) > latePurity)
+            {
+                latePurity = latePurity + 1;
+            }
+
+            if (latePurity > Player.instance.GetPurity())
+            {
+                latePurity = Player.instance.GetPurity();
+            }
+        
+    }
 
     void AdjustValues()
     {
@@ -60,7 +86,8 @@ public class HUD : MonoBehaviour
         staminaImage.fillAmount = staminaPercentage;
         pissImage.fillAmount = pissPercentage;
         healthRemnantImage.fillAmount = healthRemnantPercentage;
-        purity.text = ""+Player.instance.GetPurity();
+        LatePurityAdjuster();
+        purity.text = ""+latePurity;
 
 
 

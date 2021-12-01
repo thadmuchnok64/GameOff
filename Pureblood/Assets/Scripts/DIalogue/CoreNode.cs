@@ -44,4 +44,14 @@ public class CoreNode : Node {
         return false;
     }
 
+    public virtual int[] GetHostileID()
+    {
+        return null;
+    }
+
+    public virtual int PurityStored()
+    {
+        return 0;
+    }
+
 }

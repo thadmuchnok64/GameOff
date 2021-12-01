@@ -24,11 +24,11 @@ public class Movement : MonoBehaviour
     
     public virtual void Update()
     {
-        if (Mathf.Abs(rb.velocity.magnitude) <= 0.01 && (thisEntity.currentState != Entity.EntityStates.DASHING && thisEntity.currentState != Entity.EntityStates.ATTACKING && thisEntity.currentState != Entity.EntityStates.STUNNED && thisEntity.currentState != Entity.EntityStates.PARRYING) && (thisEntity.currentState != Entity.EntityStates.TALKING))
+        if (Mathf.Abs(rb.velocity.magnitude) <= 0.01 && (thisEntity.currentState != Entity.EntityStates.DASHING && thisEntity.currentState != Entity.EntityStates.ATTACKING && thisEntity.currentState != Entity.EntityStates.STUNNED && thisEntity.currentState != Entity.EntityStates.PARRYING) && (thisEntity.currentState != Entity.EntityStates.TALKING && (thisEntity.currentState != Entity.EntityStates.DEAD)))
         {
             thisEntity.currentState = Entity.EntityStates.IDLE;
         }
-        else if ((Mathf.Abs(rb.velocity.magnitude) >= 0.02) && (thisEntity.currentState != Entity.EntityStates.DASHING && thisEntity.currentState != Entity.EntityStates.ATTACKING && thisEntity.currentState != Entity.EntityStates.STUNNED && thisEntity.currentState != Entity.EntityStates.PARRYING) && (thisEntity.currentState != Entity.EntityStates.TALKING))
+        else if ((Mathf.Abs(rb.velocity.magnitude) >= 0.02) && (thisEntity.currentState != Entity.EntityStates.DASHING && thisEntity.currentState != Entity.EntityStates.ATTACKING && thisEntity.currentState != Entity.EntityStates.STUNNED && thisEntity.currentState != Entity.EntityStates.PARRYING) && (thisEntity.currentState != Entity.EntityStates.TALKING && (thisEntity.currentState != Entity.EntityStates.DEAD)))
         {
             thisEntity.currentState = Entity.EntityStates.WALKING;
         }

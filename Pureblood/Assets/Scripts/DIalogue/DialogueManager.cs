@@ -41,18 +41,19 @@ public class DialogueManager : MonoBehaviour
     private AudioClip[] characterSounds;
     private int charIndex;
     public Shop shop;
+    private NPC[] listOfNpcs;
     //[SerializeField] Animator characterAnim;
     //[SerializeField] AudioSource aud;
 
     // xNode stuff below this
-
+    private Coroutine secondaryDialogueCor;
     public DialogueGraph graph;
     private void Start()
     {
         processRunning = false;
         commonDialogues = new Queue<string>();
         commonPositions = new Queue<Transform>();
-        StartCoroutine(CommonDialogue());
+        secondaryDialogueCor=StartCoroutine(CommonDialogue());
         
     }
     #region Singleton Pattern
@@ -84,10 +85,11 @@ public class DialogueManager : MonoBehaviour
         StartCoroutine(InitiateDialogueDelay());
     }
 
-    public void StartDialogue(DialogueGraph dg,Transform[] t )
+    public void StartDialogue(DialogueGraph dg,Transform[] t,NPC[] n)
     {
         charIndex = 0;
         playerTran = t;
+        listOfNpcs = n;
         diaBox.transform.position = playerTran[0].position + new Vector3(0, 2, 0);
         CameraScript.instance.AddPointOfFocus(dialogueText.transform);
         CameraScript.instance.AddPointOfFocus(dialogueText.transform);
@@ -119,11 +121,20 @@ public class DialogueManager : MonoBehaviour
         commonPositions.Enqueue(pos);
     }
 
+    public void OverrideDialogue(string s, Transform pos)
+    {
+        commonDialogues.Clear();
+        commonPositions.Clear();
+        StartIndirectDialogue(s, pos);
+        StopCoroutine(secondaryDialogueCor);
+        secondaryDialogueCor = StartCoroutine(CommonDialogue());
+
+    }
+
     private IEnumerator CommonDialogue()
     {
         while (true)
         {
-            yield return new WaitForSeconds(1);
             if (commonDialogues.Count > 0)
             {
                 extraDiabox.gameObject.SetActive(true);
@@ -132,8 +143,8 @@ public class DialogueManager : MonoBehaviour
                 extraDiabox.transform.position = commonPositions.Dequeue().position+new Vector3(0,1.5f,0);
                 yield return new WaitForSeconds(4);
                 extraDiabox.gameObject.SetActive(false);
-
             }
+            yield return new WaitForSeconds(1);
 
         }
     }
@@ -187,7 +198,14 @@ public class DialogueManager : MonoBehaviour
         {
             shop.SetUpShop(charName);
         }
-
+        if (graph.currentNode.GetHostileID() != null)
+        {
+            foreach(int iter in graph.currentNode.GetHostileID())
+            {
+                listOfNpcs[iter].hostile = true;
+            }
+        }
+        Player.instance.AddPurity(graph.currentNode.PurityStored());
         if (graph.currentNode==null||graph.currentNode.IsEndPoint())
         {
             Exit();

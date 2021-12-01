@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a26d0cbdee1ffd6419f55663ff06833e, type: 3}
+  m_Name: Magic Missile
+  m_EditorClassIdentifier: 
+  itemName: Magic Missile
+  sprite: {fileID: 7020384587272218957, guid: b38e59f3aa8823c46af22208f0078b79, type: 3}
+  prefab: {fileID: 0}
+  type: 0
+  description: Your father wouldn't approve, but its pretty cool eh? Scales with
+    Divinity
+  maxStackAmount: 1
+  buyValue: 700
+  sellValue: 100
+  damage: 27
+  baseDamage: 12
+  scalingMultiplier: 2.2
+  scalingStat: Divinity
+  weaponRange: 0
+  pissMeterGain: 0
+  staminaDrain: 0
+  pissDrain: 20
+  cooldown: 0.8
+  weaponType: 1
+  projectileAmount: 1
+  bulletObject: {fileID: 3997142237909540075, guid: 7cee9ce470ea2434c8decb4cbb2e61ab, type: 3}
+  gunParticles: {fileID: 8460022137434703218, guid: d04c22b5a49e4a44380e004a0be3b9f0, type: 3}
+  recoilAmount: 0
+  spread: 0
+  attackSounds: []
+  drySounds: []
+  equipSound: {fileID: 0}
+  impactSounds: []
+  animatorOverrideController: {fileID: 22100000, guid: dc4b8fa013474d345bbe6847249cbe9f, type: 2}
+  weight: 0

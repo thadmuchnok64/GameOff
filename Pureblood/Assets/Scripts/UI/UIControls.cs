@@ -10,8 +10,11 @@ public class UIControls : MonoBehaviour
     [SerializeField] AudioClip[] EquipAudio;
 
     Controls controls;
+    
 
+    bool settingsActive = false;
     public static UIControls instance;
+    [SerializeField] TMPro.TextMeshProUGUI pickUpText;
     // Start is called before the first frame update
     void Start()
     {
@@ -44,7 +47,8 @@ public class UIControls : MonoBehaviour
         controls.Player.WeaponThree.performed += EquipWeaponThree;
         controls.Player.WeaponThree.Enable();
 
-        
+        settingsActive = false;
+
         if (instance == null)
         {
             instance = this;
@@ -57,11 +61,34 @@ public class UIControls : MonoBehaviour
     }
 
 
+    public void PickUpText(string s)
+    {
+        pickUpText.text = "Picked up "+ s +" Press 'Tab' or 'T' to open inventory";
+        StartCoroutine(FadeFoundText());
+    }
+
+    IEnumerator FadeFoundText()
+    {
+        for (int x = 0; x < 50; x++)
+        {
+            pickUpText.color = pickUpText.color + (new Color(0, 0, 0, .02f));
+            yield return new WaitForFixedUpdate();
+        }
+        yield return new WaitForSeconds(1.5f);
+        for (int x = 0; x < 50; x++)
+        {
+            pickUpText.color = pickUpText.color - (new Color(0, 0, 0, .02f));
+            yield return new WaitForFixedUpdate();
+        }
+        pickUpText.color = pickUpText.color * (new Color(1, 1, 1, 0));
+
+    }
+
 
 
     [SerializeField] ItemSlot consumableGUISlot;
     [SerializeField] ItemSlot weaponGUISlot;
-
+    
     private void ScrollConsumables(InputAction.CallbackContext context)
     {
         bool hasConsumablesEquipped = false;
@@ -80,7 +107,7 @@ public class UIControls : MonoBehaviour
         
     }
     
-
+    
     private bool inventoryToggled = false;
     [SerializeField] GameObject inventoryObject;
     [SerializeField] GameObject inventoryItemList;
@@ -175,7 +202,7 @@ public class UIControls : MonoBehaviour
     }
 
 
-
+    
     private bool pauseMenuToggled = false;
     [SerializeField] GameObject pauseMenuObject;
     private void TogglePauseMenu(InputAction.CallbackContext context)
@@ -193,6 +220,13 @@ public class UIControls : MonoBehaviour
             pauseMenuToggled = false;
             pauseMenuObject.gameObject.SetActive(false);
             Time.timeScale = 1;
+        }
+        else if(!pauseMenuToggled && settingsActive)
+        {
+            pauseMenuToggled = true;
+            pauseMenuObject.SetActive(true);
+            settingsActive = false;
+            settingsMenu.SetActive(false);
         }
         else
         {
@@ -219,6 +253,27 @@ public class UIControls : MonoBehaviour
 
         return true;
 
+    }
+
+    [SerializeField] GameObject settingsMenu;
+    public void ToggleSettingsMenu()
+    {
+        pauseMenuToggled = false;
+        pauseMenuObject.SetActive(false);
+        settingsMenu.SetActive(true);
+        settingsActive = true;
+    }
+
+    public bool CheckIfAnyMenusAreOn()
+    {
+        if(inventoryToggled || questsToggled || levelUpWindowToggled || shopMenuToggled || settingsActive || pauseMenuToggled)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     private void UseItem(InputAction.CallbackContext context)
@@ -249,7 +304,7 @@ public class UIControls : MonoBehaviour
         */
 
         //TESTING FOR NEW INV SYSTEM
-        if(Player.instance.equippedConsumable != null && Player.instance.equippedConsumable.SubtractAmount(1) )
+        if(Player.instance.equippedConsumable != null && Player.instance.equippedConsumable.SubtractAmount(1) && Player.instance.currentState != Entity.EntityStates.DEAD)
         {
             Player.instance.consumablesFunctions.UseItem(Player.instance.equippedConsumable.item.itemName);
             if(Player.instance.equippedConsumable.amount == 0)
@@ -291,13 +346,25 @@ public class UIControls : MonoBehaviour
         
 
     }
+
+
+    [SerializeField] Animator transitionAnimator;
+
+    public void Transtion()
+    {
+        transitionAnimator.Play("Transition");
+    }
+
+
+
     private void EquipWeaponOne(InputAction.CallbackContext context)
     {
         if(Player.instance.currentState != Entity.EntityStates.ATTACKING && Player.instance.theInventory.equippedWeapons[0].item != null)
         {
-            SoundMaster.instance.PlayRandomSound(EquipAudio);
+            
             Player.instance.EquipItemInHand(Player.instance.theInventory.equippedWeapons[0]);
             weaponGUISlot.SetItem(Player.instance.theInventory.equippedWeapons[0]);
+            SoundMaster.instance.PlaySoundEffect(Player.instance.equippedWeapon.equipSound);
         }
         
     }
@@ -306,9 +373,9 @@ public class UIControls : MonoBehaviour
     {
         if (Player.instance.currentState != Entity.EntityStates.ATTACKING && Player.instance.theInventory.equippedWeapons[1].item != null)
         {
-            SoundMaster.instance.PlayRandomSound(EquipAudio);
             Player.instance.EquipItemInHand(Player.instance.theInventory.equippedWeapons[1]);
             weaponGUISlot.SetItem(Player.instance.theInventory.equippedWeapons[1]);
+            SoundMaster.instance.PlaySoundEffect(Player.instance.equippedWeapon.equipSound);
         }
         
     }
@@ -316,9 +383,9 @@ public class UIControls : MonoBehaviour
     {
         if(Player.instance.currentState != Entity.EntityStates.ATTACKING && Player.instance.theInventory.equippedWeapons[2].item != null )
         {
-            SoundMaster.instance.PlayRandomSound(EquipAudio);
             Player.instance.EquipItemInHand(Player.instance.theInventory.equippedWeapons[2]);
             weaponGUISlot.SetItem(Player.instance.theInventory.equippedWeapons[2]);
+            SoundMaster.instance.PlaySoundEffect(Player.instance.equippedWeapon.equipSound);
         }
         
     }

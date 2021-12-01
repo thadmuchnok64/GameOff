@@ -150,11 +150,23 @@ public class InventoryUI : MonoBehaviour
             inventory.EquipArmor(selectedSlot-3, item);
             if(Player.instance.theInventory.equippedArmors[0].item != null)
             {
-                Player.instance.SetConstitution(Player.instance.GetConstitution() + (Player.instance.theInventory.equippedArmors[0].item as ArmorObject).constitutionBonus + (Player.instance.theInventory.equippedArmors[1].item as ArmorObject).constitutionBonus);
+                Player.instance.SetEndurance(Player.instance.GetEndurance() + (Player.instance.theInventory.equippedArmors[0].item as ArmorObject).enduranceBonus);
+                Player.instance.SetConstitution(Player.instance.GetConstitution() + (Player.instance.theInventory.equippedArmors[0].item as ArmorObject).constitutionBonus);
+                if (Player.instance.theInventory.equippedArmors[1].item != null)
+                {
+                    Player.instance.SetConstitution(Player.instance.GetConstitution() + (Player.instance.theInventory.equippedArmors[0].item as ArmorObject).constitutionBonus + (Player.instance.theInventory.equippedArmors[1].item as ArmorObject).constitutionBonus);
+                    Player.instance.SetEndurance(Player.instance.GetEndurance() + (Player.instance.theInventory.equippedArmors[0].item as ArmorObject).enduranceBonus + (Player.instance.theInventory.equippedArmors[1].item as ArmorObject).enduranceBonus);
+                } 
             }
-            if(Player.instance.theInventory.equippedArmors[1].item != null)
+            if (Player.instance.theInventory.equippedArmors[1].item != null)
             {
-                Player.instance.SetEndurance(Player.instance.GetEndurance() + (Player.instance.theInventory.equippedArmors[0].item as ArmorObject).enduranceBonus + (Player.instance.theInventory.equippedArmors[1].item as ArmorObject).enduranceBonus);
+                Player.instance.SetEndurance(Player.instance.GetEndurance() + (Player.instance.theInventory.equippedArmors[1].item as ArmorObject).enduranceBonus);
+                Player.instance.SetConstitution(Player.instance.GetConstitution() + (Player.instance.theInventory.equippedArmors[1].item as ArmorObject).constitutionBonus);
+                if (Player.instance.theInventory.equippedArmors[0].item != null)
+                {
+                    Player.instance.SetConstitution(Player.instance.GetConstitution() + (Player.instance.theInventory.equippedArmors[0].item as ArmorObject).constitutionBonus + (Player.instance.theInventory.equippedArmors[1].item as ArmorObject).constitutionBonus);
+                    Player.instance.SetEndurance(Player.instance.GetEndurance() + (Player.instance.theInventory.equippedArmors[0].item as ArmorObject).enduranceBonus + (Player.instance.theInventory.equippedArmors[1].item as ArmorObject).enduranceBonus);
+                }
             }
         }
         else

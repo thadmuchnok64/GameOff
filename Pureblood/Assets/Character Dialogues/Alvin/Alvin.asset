@@ -570,6 +570,7 @@ MonoBehaviour:
   answer: "I need to find my father. He\u2019ll know more."
   response: I think I saw him over at his shop, if you're looking for him.
   questID: 1
+  finishedQuestId: -1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -601,7 +602,7 @@ MonoBehaviour:
   - {fileID: -2049707884804760352}
   - {fileID: -2954391472767781162}
   - {fileID: 6705223005616500615}
-  currentNode: {fileID: -2954391472767781162}
+  currentNode: {fileID: -2049707884804760352}
 --- !u!114 &303921893974572144
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1531,5 +1532,6 @@ MonoBehaviour:
   choice4: 0
   answer: '[Continue]'
   response: Oh by the way, if you're looking for your father, he's at his shop right
-    now.
+    now to the east in the marketplace.
   questID: 1
+  finishedQuestId: -1

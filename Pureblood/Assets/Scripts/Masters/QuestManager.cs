@@ -10,6 +10,7 @@ public class QuestManager : MonoBehaviour
     [SerializeField] Quest[] questList;
     List<Quest> listOfActiveQuests;
     List<Quest> listOfCompleteQuests;
+    [SerializeField] TMPro.TextMeshProUGUI newQuestText;
     
 
     public static QuestManager instance;
@@ -68,8 +69,26 @@ public class QuestManager : MonoBehaviour
             Debug.Log("Invalid quest id given.");
             return false;
         }
-
+        StartCoroutine(DisplayQuest());
         return true;
+    }
+
+    IEnumerator DisplayQuest()
+    {
+        for (int x = 0; x < 50; x++)
+        {
+            newQuestText.color = newQuestText.color + (new Color(0, 0, 0, .02f));
+            yield return new WaitForFixedUpdate();
+        }
+        yield return new WaitForSeconds(1.5f);
+        for (int x = 0; x < 50; x++)
+        {
+            newQuestText.color = newQuestText.color - (new Color(0, 0, 0, .02f));
+            yield return new WaitForFixedUpdate();
+        }
+        newQuestText.color = newQuestText.color * (new Color(1, 1, 1, 0));
+
+
     }
 
     private void SortQuests(Quest[] x)
